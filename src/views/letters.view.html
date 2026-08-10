@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/letters.css">
+</head>
+<body>
+  <canvas id="canvas-hearts"></canvas>
+
+  <div class="back-link-wrap">
+    <a href="./index.view.html" class="back-link">
+      <span class="back-link-arrow">&#8592;</span>
+      <span data-i18n="RETURN"></span>
+    </a>
+  </div>
+
+  <div id="error-message" class="error" style="display:none"><p data-i18n="LETTER_NOT_FOUND"></p></div>
+
+  <audio id="letter-audio" autoplay muted preload="auto" playsinline></audio>
+
+  <div class="envelope-animation-wrap" id="envelope-wrap">
+    <div class="envelope-stage">
+      <div class="env-fundo"></div>
+
+      <div class="env-papel" id="paper">
+        <div class="paper-text">
+          <p data-variable="CLOSED_LETTER_TEXT_TOP_LINE"></p><br>
+          <p data-variable="CLOSED_LETTER_TEXT_BOTTOM_LINE"></p>
+        </div>
+      </div>
+
+      <div class="env-corpo-svg">
+        <svg viewBox="0 0 100 63" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 0,63 47,42" fill="#c9a87c" />
+          <polygon points="100,0 100,63 53,42" fill="#c4a07a" />
+          <polygon points="0,63 100,63 50,30" fill="#bfa06e" />
+        </svg>
+      </div>
+
+      <div class="env-aba" id="flap">
+        <svg viewBox="0 0 100 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 100,0 50,44" fill="#d4b896" />
+        </svg>
+      </div>
+
+      <div class="env-lacre" id="seal"><span class="seal-heart" aria-hidden="true">&#9825;</span></div>
+    </div>
+  </div>
+
+  <div class="letter-wrap" id="letter-wrap">
+    <div class="letter">
+      <div class="letter-corners">
+        <span class="letter-corner letter-corner-tl"></span>
+        <span class="letter-corner letter-corner-tr"></span>
+        <span class="letter-corner letter-corner-bl"></span>
+        <span class="letter-corner letter-corner-br"></span>
+      </div>
+      <div class="letter-top">
+        <div class="letter-ornament">&#10086;</div>
+        <span class="letter-date" id="letter-date"></span>
+        <h1 class="letter-title" id="letter-title"></h1>
+      </div>
+      <div class="letter-divider"></div>
+      <div class="letter-body" id="letter-body"></div>
+      <div class="letter-footer">
+        <span class="letter-footer-ornament"></span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="letter-nav" id="letter-nav">
+    <a id="nav-previous" class="nav-button invisible" href="#">&#8592; <p data-i18n="PREVIOUS"></p></a>
+    <span class="nav-counter" id="letter-counter"></span>
+    <a id="nav-next" class="nav-button invisible" href="#"><p data-i18n="NEXT"></p> &#8594;</a>
+  </nav>
+
+  <script type="module" src="../data/letters.js"></script>
+  <script type="module" src="../script/letters.script.js"></script>
+  <script type="module" src="../script/i18n.js"></script>
+  <script type="module" src="../script/data.variable.js"></script>
+</html>
