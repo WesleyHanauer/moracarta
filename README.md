@@ -1,6 +1,6 @@
 [🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)
 
-# Digital Love Letters
+# Moracarta
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@
 - It's recommended to open the website at least once before changing the global variables, so you can get a better idea of what each variable controls.
 
 - You can also check out the demo:
-  [https://digital-love-letters.pages.dev](https://digital-love-letters.pages.dev) or [https://wesleyhanauer.github.io/digital-love-letters](https://wesleyhanauer.github.io/digital-love-letters)
+  [Moracarta Cloudflare Pages](https://moracarta.pages.dev) or [Moracarta Github Pages](https://wesleyhanauer.github.io/moracarta)
 
 ### Letters
 

@@ -1,6 +1,6 @@
 [🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)
 
-# Cartas românticas digitais
+# Moracarta
 
 ## Índice
 
@@ -37,7 +37,7 @@
 - É recomendado que você acesse o site pelo menos uma vez antes de começar a alterar as variáveis globais, para entender a função de cada variável.
 
 - Ou, se preferir, acesse a demonstração em:
-  [https://digital-love-letters.pages.dev](https://digital-love-letters.pages.dev) ou [https://wesleyhanauer.github.io/digital-love-letters](https://wesleyhanauer.github.io/digital-love-letters)
+  [Moracarta Cloudflare Pages](https://moracarta.pages.dev) ou [Moracarta Github Pages](https://wesleyhanauer.github.io/moracarta)
 
 ### Cartas
 
