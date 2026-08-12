@@ -5,8 +5,8 @@
  * 
  *   {
     id: 1,
-    date: '16 feb, 2026.',
-    title: 'Example',
+    date: 'Aug 29, 2026',
+    title: 'Letter title',
     music: 'path_to_music',
     startTime: 0, // Timestamp this specific song will start plaing on when opening it's assigned letter
     content: `First phrase,
@@ -18,8 +18,8 @@
 export const letters = [
   {
     id: 1,
-    date: '16 feb, 2026.',
-    title: 'Example',
+    date: 'Jun 6, 2026',
+    title: 'Custom Letter Title 1',
     music: 'nastelbom-romantic1.mp3',
     startTime: 0,
     content: `Dearest Mary Jane,
@@ -34,8 +34,8 @@ Peter Parker`
 },
 {
     id: 2,
-    date: '16 feb, 2026.',
-    title: 'Example',
+    date: 'Feb 14, 2026',
+    title: 'Custom Letter Title 2',
     music: 'nastelbom-romantic2.mp3',
     startTime: 0,
     content: `My Dearest Mary Jane,
