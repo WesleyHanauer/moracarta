@@ -104,7 +104,4 @@ digital-love-letters/
 
 ## License
 
-This project is available for personal and non-commercial use.
-Commercial use requires prior permission from the author.
-
-See the `LICENSE` file for the full terms.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
