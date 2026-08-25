@@ -85,7 +85,7 @@ digital-love-letters/
 │   ├── data/
 │   │   └── letters.js
 │   ├── styles/
-│   ├── script/
+│   ├── scripts/
 │   ├── views/
 │   └── i18n/
 ├── assets/
@@ -99,7 +99,7 @@ digital-love-letters/
 - `src/config/globalVariables.js` — General site configuration.
 - `src/data/letters.js` — Letter content.
 - `src/styles/` — General styling and animations.
-- `src/script/` — Animation and translation logic.
+- `src/scripts/` — Animation and translation logic.
 - `src/views/` — The app's HTML pages.
 - `assets/images/` — Images used by the website.
 - `assets/music/` — Music used in the letters and on the main page.

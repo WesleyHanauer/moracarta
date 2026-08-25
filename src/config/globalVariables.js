@@ -34,8 +34,8 @@ const PASSWORD2 = "";
 const MUSIC = true;
 // Set USE_MAIN_PAGE_MUSIC to true in order to play music on index
 const USE_MAIN_PAGE_MUSIC = true;
-// Use the path of a song inside assets/music referenced from index.view.html
-const MAIN_PAGE_MUSIC_PATH = "../../assets/music/leberch-romantic-date.mp3";
+// Use the path of a song inside assets/music referenced from main.view.html
+const MAIN_PAGE_MUSIC_PATH = "https://pixabay.com/music/beautiful-plays-romantic-romantic-music-573992/";
 
 const TEXT_TOP = "Here you can put a custom message";
 const TEXT_BOTTOM = "Here you can put another custom message"
