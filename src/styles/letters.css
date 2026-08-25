@@ -65,6 +65,12 @@ body {
   width: 100%;
   max-width: 380px;
   aspect-ratio: 1 / 0.5;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.envelope-stage.ready {
+  opacity: 1;
 }
 
 .env-fundo {

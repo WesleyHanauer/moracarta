@@ -89,6 +89,7 @@ if (!letter) {
   document.getElementById('letter-body').innerHTML = letter.content;
 
   applyEnvelopePalette(letter);
+  document.querySelector('.envelope-stage').classList.add('ready');
 
   const audioElement = document.getElementById('letter-audio');
   let musicButton;
