@@ -18,9 +18,9 @@
 
 ## Demo
 
-![Main page demo](./assets/demo-main-page.png)
+![Main page demo](./assets/images/demo-main-page.png)
 
-![Envelope anim demo](./assets/demo-animation.gif)
+![Envelope anim demo](./assets/images/demo-animation.gif)
 
 ## Descrição
 
@@ -48,7 +48,7 @@
 ### Músicas
 
 - Para ativar a função de músicas, altere a variável `MUSIC` dentro de `globalVariables.js` para `true`.
-- As músicas incluídas em `src/media/music` são livres de direitos autorais e estão disponíveis apenas como exemplos de como utilizar suas próprias músicas. Seu uso no projeto é permitido.
+- As músicas incluídas em `assets/music` são livres de direitos autorais e estão disponíveis apenas como exemplos de como utilizar suas próprias músicas. Seu uso no projeto é permitido.
 
 #### Página principal
 
@@ -87,8 +87,10 @@ digital-love-letters/
 │   ├── styles/
 │   ├── script/
 │   ├── views/
-│   ├── media/
 │   └── i18n/
+├── assets/
+│   ├── images/
+│   └── music/
 ├── README.md
 ├── README.pt-BR.md
 └── LICENSE
@@ -99,7 +101,8 @@ digital-love-letters/
 - `src/styles/` — Estilos gerais e animações.
 - `src/script/` — Scripts e lógica das animações e da tradução.
 - `src/views/` — Páginas HTML do aplicativo.
-- `src/media/` — Imagens e músicas utilizadas nas cartas.
+- `assets/images/` — Imagens utilizadas pelo site.
+- `assets/music/` — Músicas utilizadas nas cartas e na página principal.
 - `src/i18n/` — Idiomas disponíveis para tradução geral do aplicativo.
 
 ## Licença

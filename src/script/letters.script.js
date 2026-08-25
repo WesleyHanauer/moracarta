@@ -103,7 +103,7 @@ if (!letter) {
 
     musicButtonIcon = document.createElement('img');
     musicButtonIcon.id = 'music-toggle-icon';
-    musicButtonIcon.src = '../media/image/pause.png';
+    musicButtonIcon.src = '../../assets/images/pause.png';
     musicButtonIcon.alt = 'Pause music';
 
     musicButton.appendChild(musicButtonIcon);
@@ -119,11 +119,11 @@ if (!letter) {
     if (isPaused) {
       musicButton.setAttribute('aria-label', 'Play music');
       musicButtonIcon.setAttribute('alt', 'Play music');
-      musicButtonIcon.src = '../media/image/play.png';
+      musicButtonIcon.src = '../../assets/images/play.png';
     } else {
       musicButton.setAttribute('aria-label', 'Pause music');
       musicButtonIcon.setAttribute('alt', 'Pause music');
-      musicButtonIcon.src = '../media/image/pause.png';
+      musicButtonIcon.src = '../../assets/images/pause.png';
     }
   }
 
@@ -172,7 +172,7 @@ if (!letter) {
       : `${letter.music.trim()}.mp3`;
 
     const source = document.createElement('source');
-    source.src = `../media/music/${musicFileName}`;
+    source.src = `../../assets/music/${musicFileName}`;
     source.type = 'audio/mpeg';
     audioElement.appendChild(source);
     audioElement.loop = true;

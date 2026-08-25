@@ -130,11 +130,11 @@ function updateMusicButtonIcon(isPaused) {
   if (isPaused) {
     musicButton.setAttribute('aria-label', 'Play music');
     musicButtonIcon.setAttribute('alt', 'Play music');
-    musicButtonIcon.src = '../media/image/play.png';
+    musicButtonIcon.src = '../../assets/images/play.png';
   } else {
     musicButton.setAttribute('aria-label', 'Pause music');
     musicButtonIcon.setAttribute('alt', 'Pause music');
-    musicButtonIcon.src = '../media/image/pause.png';
+    musicButtonIcon.src = '../../assets/images/pause.png';
   }
 }
 

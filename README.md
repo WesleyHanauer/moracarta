@@ -18,9 +18,9 @@
 
 ## Demo
 
-![Main page demo](./assets/demo-main-page.png)
+![Main page demo](./assets/images/demo-main-page.png)
 
-![Envelope anim demo](./assets/demo-animation.gif)
+![Envelope anim demo](./assets/images/demo-animation.gif)
 
 ## Description
 
@@ -48,7 +48,7 @@
 ### Music
 
 - To enable music, set the `MUSIC` variable in `globalVariables.js` to `true`.
-- The music inside `src/media/music` is copyright free and only used as an example on how to setup your own music, feel free to use them though.
+- The music inside `assets/music` is copyright free and only used as an example on how to setup your own music, feel free to use them though.
 
 #### Main Page
 
@@ -87,8 +87,10 @@ digital-love-letters/
 │   ├── styles/
 │   ├── script/
 │   ├── views/
-│   ├── media/
 │   └── i18n/
+├── assets/
+│   ├── images/
+│   └── music/
 ├── README.md
 ├── README.pt-BR.md
 └── LICENSE
@@ -99,7 +101,8 @@ digital-love-letters/
 - `src/styles/` — General styling and animations.
 - `src/script/` — Animation and translation logic.
 - `src/views/` — The app's HTML pages.
-- `src/media/` — Images and music used in the letters.
+- `assets/images/` — Images used by the website.
+- `assets/music/` — Music used in the letters and on the main page.
 - `src/i18n/` — Available languages for translating the app.
 
 ## License
