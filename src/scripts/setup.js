@@ -5,34 +5,21 @@ import {
 } from "@inquirer/prompts";
 import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import setupTranslations from "../i18n/setupTranslations.js";
 
 const LANGUAGE = await select({
-    message: setupTranslations.en.language.message,
+    message: "What is the main language of the application?",
     choices: [
-        { name: "English", value: "en" },
-        { name: "Português (Brasil)", value: "pt-BR" },
-        { name: "Español", value: "es" },
-        { name: "Français", value: "fr" },
-        { name: "Deutsch", value: "de" },
-        { name: "Italiano", value: "it" },
-        { name: "日本語", value: "ja" },
-        { name: "한국어", value: "ko" },
-        { name: "中文", value: "zh" },
-        { name: "Русский", value: "ru" }
-    ],
-    pageSize: 3
+        { name: "English", value: "en" }
+    ]
 });
 
-const t = setupTranslations[LANGUAGE];
-
 const TITLE = await input({
-    message: t.title.message,
-    default: t.title.default
+    message: "What is the title of the application?",
+    default: "Moracarta"
 });
 
 const USE_PASSWORD = await confirm({
-    message: t.password.message,
+    message: "Would you like to use a password?",
     default: false
 });
 
@@ -41,21 +28,23 @@ let PASSWORD2 = "";
 
 if (USE_PASSWORD) {
     PASSWORD1 = await input({
-        message: t.password.first
+        message: "Enter the password:"
     });
 
     PASSWORD2 = await input({
-        message: t.password.second
+        message: "Confirm the password:"
     });
 }
 
 const FONT = await select({
-    message: setupTranslations.en.font.message,
-    choices: setupTranslations.en.font.choices
+    message: "What font would you like to use?",
+    choices: [
+        { name: "Default", value: "default" }
+    ]
 });
 
 const MUSIC = await confirm({
-    message: t.music.enable,
+    message: "Would you like to enable music?",
     default: true
 });
 
@@ -64,41 +53,41 @@ let MAIN_PAGE_MUSIC_PATH = "";
 
 if (MUSIC) {
     USE_MAIN_PAGE_MUSIC = await confirm({
-        message: t.music.mainPage,
+        message: "Would you like music on the main page?",
         default: true
     });
 
     if (USE_MAIN_PAGE_MUSIC) {
         MAIN_PAGE_MUSIC_PATH = "./../assets/music/" + await input({
-            message: t.music.path,
-            default: t.music.defaultPath
+            message: "What is the music file name?",
+            default: "music.mp3"
         });
     }
 }
 
 const TEXT_TOP = await input({
-    message: t.text.top.message,
-    default: t.text.top.default
+    message: "What text should appear at the top?",
+    default: "A special letter for you"
 });
 
 const TEXT_BOTTOM = await input({
-    message: t.text.bottom.message,
-    default: t.text.bottom.default
+    message: "What text should appear at the bottom?",
+    default: "With love"
 });
 
 const YOUR_NAME = await input({
-    message: t.name.message,
-    default: t.name.default
+    message: "What is your name?",
+    default: "Your name"
 });
 
 const CLOSED_LETTER_TEXT_TOP_LINE = await input({
-    message: t.envelope.top.message,
-    default: t.envelope.top.default
+    message: "What text should appear on the top of the closed letter?",
+    default: "You have a letter"
 });
 
 const CLOSED_LETTER_TEXT_BOTTOM_LINE = await input({
-    message: t.envelope.bottom.message,
-    default: t.envelope.bottom.default
+    message: "What text should appear on the bottom of the closed letter?",
+    default: "Click to open"
 });
 
 const config = `/**
@@ -155,6 +144,6 @@ const configPath = resolve(
 
 await writeFile(configPath, config, "utf8");
 
-console.log(`\n${t.complete}`);
-console.log(`${t.saved} ${configPath}`);
-console.log(`npm run dev to test the application`);
+console.log("\nSetup complete!");
+console.log(`Configuration saved to ${configPath}`);
+console.log("Run npm run dev to test the application");
