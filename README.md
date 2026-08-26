@@ -1,7 +1,5 @@
 # Moracarta
 
-[🇺🇸 English](README.md) | [🇧🇷 Português](docs/README.pt-BR.md)
-
 Create a personalized romantic website with digital letters, music, animations, and more — without needing a backend.
 
 ## Table of Contents
