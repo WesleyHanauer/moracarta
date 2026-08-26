@@ -3,12 +3,15 @@
  */
 
 const LANGUAGE = "en";
+
+const PROJECT_NAME = "romantic-gift";
 const TITLE = "Letters to my love";
 
 const USE_PASSWORD = false;
 const PASSWORD1 = "";
 const PASSWORD2 = "";
-const FONT = "classic";
+
+const FONT = "default";
 
 const MUSIC = true;
 const USE_MAIN_PAGE_MUSIC = true;
@@ -26,6 +29,7 @@ const CLOSED_LETTER_TEXT_BOTTOM_LINE =
 
 const globalVariables = {
     LANGUAGE,
+    PROJECT_NAME,
     TITLE,
     YOUR_NAME,
     USE_PASSWORD,

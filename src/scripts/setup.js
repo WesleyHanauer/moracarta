@@ -9,17 +9,23 @@ import { resolve } from "node:path";
 const LANGUAGE = await select({
     message: "What is the main language of the application?",
     choices: [
-        { name: "English", value: "en" }
+        { name: "English", value: "en" },
+        { name: "Português (Brasil)", value: "pt-BR" }
     ]
 });
 
+const PROJECT_NAME = await input({
+    message: "What should your project be called? (Cloudflare project name, do not use 'moracarta')",
+    default: "romantic-gift",
+});
+
 const TITLE = await input({
-    message: "What is the title of the application?",
-    default: "Moracarta"
+    message: "Enter the title of the application:",
+    default: "Letters to my love"
 });
 
 const USE_PASSWORD = await confirm({
-    message: "Would you like to use a password?",
+    message: "Do you want to require a password in the URL? (default N, See docs/PASSWORD.md for more information)",
     default: false
 });
 
@@ -28,11 +34,11 @@ let PASSWORD2 = "";
 
 if (USE_PASSWORD) {
     PASSWORD1 = await input({
-        message: "Enter the password:"
+        message: "Enter the first password parameter:"
     });
 
     PASSWORD2 = await input({
-        message: "Confirm the password:"
+        message: "Enter the second password parameter:"
     });
 }
 
@@ -44,7 +50,7 @@ const FONT = await select({
 });
 
 const MUSIC = await confirm({
-    message: "Would you like to enable music?",
+    message: "Enable music?",
     default: true
 });
 
@@ -53,41 +59,41 @@ let MAIN_PAGE_MUSIC_PATH = "";
 
 if (MUSIC) {
     USE_MAIN_PAGE_MUSIC = await confirm({
-        message: "Would you like music on the main page?",
+        message: "Play music on the main page?",
         default: true
     });
 
     if (USE_MAIN_PAGE_MUSIC) {
         MAIN_PAGE_MUSIC_PATH = "./../assets/music/" + await input({
-            message: "What is the music file name?",
-            default: "music.mp3"
+            message: "Enter the name of the main page music (see docs/MUSIC.md for more information): ",
+            default: "leberch-romantic-date.mp3"
         });
     }
 }
 
 const TEXT_TOP = await input({
-    message: "What text should appear at the top?",
-    default: "A special letter for you"
+    message: "Enter the message at the top of the main page:",
+    default: "Here you can put a custom message"
 });
 
 const TEXT_BOTTOM = await input({
-    message: "What text should appear at the bottom?",
-    default: "With love"
+    message: "Enter the message at the bottom of the main page:",
+    default: "Here you can put another custom message"
 });
 
 const YOUR_NAME = await input({
-    message: "What is your name?",
-    default: "Your name"
+    message: "Enter your name (your quote, press TAB to edit):",
+    default: "— Name ♡"
 });
 
 const CLOSED_LETTER_TEXT_TOP_LINE = await input({
-    message: "What text should appear on the top of the closed letter?",
-    default: "You have a letter"
+    message: "Enter the text on the top line of the closed envelope (press TAB to edit): ",
+    default: "&#10084;&#65039; To Mary Jane &#10084;&#65039;"
 });
 
 const CLOSED_LETTER_TEXT_BOTTOM_LINE = await input({
-    message: "What text should appear on the bottom of the closed letter?",
-    default: "Click to open"
+    message: "Enter the text on the bottom line of the closed envelope (press TAB to edit): ",
+    default: "&#10084;&#65039; I love you &#10084;&#65039;"
 });
 
 const config = `/**
@@ -95,11 +101,14 @@ const config = `/**
  */
 
 const LANGUAGE = ${JSON.stringify(LANGUAGE)};
+
+const PROJECT_NAME = ${JSON.stringify(PROJECT_NAME)};
 const TITLE = ${JSON.stringify(TITLE)};
 
 const USE_PASSWORD = ${USE_PASSWORD};
 const PASSWORD1 = ${JSON.stringify(PASSWORD1)};
 const PASSWORD2 = ${JSON.stringify(PASSWORD2)};
+
 const FONT = ${JSON.stringify(FONT)};
 
 const MUSIC = ${MUSIC};
@@ -118,6 +127,7 @@ const CLOSED_LETTER_TEXT_BOTTOM_LINE =
 
 const globalVariables = {
     LANGUAGE,
+    PROJECT_NAME,
     TITLE,
     YOUR_NAME,
     USE_PASSWORD,
@@ -144,6 +154,6 @@ const configPath = resolve(
 
 await writeFile(configPath, config, "utf8");
 
-console.log("\nSetup complete!");
-console.log(`Configuration saved to ${configPath}`);
+console.log("\n❤️ Moracarta setup complete!");
+console.log(`Configuration saved to: ${configPath}`);
 console.log("Run npm run dev to test the application");
