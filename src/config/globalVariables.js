@@ -3,8 +3,7 @@
  */
 
 const LANGUAGE = "en";
-
-const PROJECT_NAME = "romantic-gift";
+const PROJECT_NAME = "moracarta";
 const TITLE = "Letters to my love";
 
 const USE_PASSWORD = false;
