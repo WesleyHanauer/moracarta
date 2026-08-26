@@ -5,9 +5,10 @@ import {
 } from "@inquirer/prompts";
 import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import setupTranslations from "../i18n/setupTranslations.js";
 
 const LANGUAGE = await select({
-    message: "What is the main language of the application?",
+    message: setupTranslations.en.language.message,
     choices: [
         { name: "English", value: "en" },
         { name: "Português (Brasil)", value: "pt-BR" },
@@ -23,13 +24,15 @@ const LANGUAGE = await select({
     pageSize: 3
 });
 
+const t = setupTranslations[LANGUAGE];
+
 const TITLE = await input({
-    message: "Enter the title of the application:",
-    default: "Letters to my love"
+    message: t.title.message,
+    default: t.title.default
 });
 
 const USE_PASSWORD = await confirm({
-    message: "Do you want to require a password in the URL? (default N, See docs/PASSWORD.md for more information)",
+    message: t.password.message,
     default: false
 });
 
@@ -38,16 +41,16 @@ let PASSWORD2 = "";
 
 if (USE_PASSWORD) {
     PASSWORD1 = await input({
-        message: "Enter the first password parameter:"
+        message: t.password.first
     });
 
     PASSWORD2 = await input({
-        message: "Enter the second password parameter:"
+        message: t.password.second
     });
 }
 
 const MUSIC = await confirm({
-    message: "Enable music?",
+    message: t.music.enable,
     default: true
 });
 
@@ -56,41 +59,41 @@ let MAIN_PAGE_MUSIC_PATH = "";
 
 if (MUSIC) {
     USE_MAIN_PAGE_MUSIC = await confirm({
-        message: "Play music on the main page?",
+        message: t.music.mainPage,
         default: true
     });
 
     if (USE_MAIN_PAGE_MUSIC) {
         MAIN_PAGE_MUSIC_PATH = "./../assets/music/" + await input({
-            message: "Enter the name of the main page music (see docs/MUSIC.md for more information): ",
-            default: "leberch-romantic-date.mp3"
+            message: t.music.path,
+            default: t.music.defaultPath
         });
     }
 }
 
 const TEXT_TOP = await input({
-    message: "Enter the message at the top of the main page:",
-    default: "Here you can put a custom message"
+    message: t.text.top.message,
+    default: t.text.top.default
 });
 
 const TEXT_BOTTOM = await input({
-    message: "Enter the message at the bottom of the main page:",
-    default: "Here you can put another custom message"
+    message: t.text.bottom.message,
+    default: t.text.bottom.default
 });
 
 const YOUR_NAME = await input({
-    message: "Enter your name (your quote, press TAB to edit):",
-    default: "— Name ♡"
+    message: t.name.message,
+    default: t.name.default
 });
 
 const CLOSED_LETTER_TEXT_TOP_LINE = await input({
-    message: "Enter the text on the top line of the closed envelope (press TAB to edit): ",
-    default: "&#10084;&#65039; To Mary Jane &#10084;&#65039;"
+    message: t.envelope.top.message,
+    default: t.envelope.top.default
 });
 
 const CLOSED_LETTER_TEXT_BOTTOM_LINE = await input({
-    message: "Enter the text on the bottom line of the closed envelope (press TAB to edit): ",
-    default: "&#10084;&#65039; I love you &#10084;&#65039;"
+    message: t.envelope.bottom.message,
+    default: t.envelope.bottom.default
 });
 
 const config = `/**
@@ -145,5 +148,6 @@ const configPath = resolve(
 
 await writeFile(configPath, config, "utf8");
 
-console.log("\n❤️ Moracarta setup complete!");
-console.log(`Configuration saved to: ${configPath}`);
+console.log(`\n${t.complete}`);
+console.log(`${t.saved} ${configPath}`);
+console.log(`npm run dev to test the application`);

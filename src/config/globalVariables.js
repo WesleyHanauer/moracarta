@@ -3,25 +3,25 @@
  */
 
 const LANGUAGE = "pt-BR";
-const TITLE = "Letters to my love";
+const TITLE = "Cartas para o meu amor";
 
 const USE_PASSWORD = false;
 const PASSWORD1 = "";
 const PASSWORD2 = "";
 
-const MUSIC = true;
-const USE_MAIN_PAGE_MUSIC = true;
-const MAIN_PAGE_MUSIC_PATH = "./../assets/music/";
+const MUSIC = false;
+const USE_MAIN_PAGE_MUSIC = false;
+const MAIN_PAGE_MUSIC_PATH = "";
 
-const TEXT_TOP = "Here you can put a custom message";
-const TEXT_BOTTOM = "Here you can put another custom message";
-const YOUR_NAME = "— Name ♡";
+const TEXT_TOP = "Aqui você pode colocar uma mensagem personalizada";
+const TEXT_BOTTOM = "Aqui você pode colocar outra mensagem personalizada";
+const YOUR_NAME = "— Wesley ♡";
 
 const CLOSED_LETTER_TEXT_TOP_LINE =
-    "&#10084;&#65039; To Mary Jane &#10084;&#65039;";
+    "&#10084;&#65039; Para Maria Jane &#10084;&#65039;";
 
 const CLOSED_LETTER_TEXT_BOTTOM_LINE =
-    "&#10084;&#65039; I love you &#10084;&#65039;";
+    "&#10084;&#65039; Eu te amo &#10084;&#65039;";
 
 const globalVariables = {
     LANGUAGE,
