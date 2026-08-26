@@ -1,5 +1,4 @@
 export default{
-    TITLE: "Cartas para o meu amor",
     TAP_TO_OPEN: "Toque para abrir",
     RETURN: "Voltar",
     PREVIOUS: "Anterior",

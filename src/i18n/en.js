@@ -1,5 +1,4 @@
 export default{
-    TITLE: "Letters to my love",
     TAP_TO_OPEN: "Tap to open",
     RETURN: "Return",
     PREVIOUS: "Previous",

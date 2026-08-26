@@ -5,6 +5,7 @@
 }
 
 :root {
+  --main-font: 'Cormorant Garamond', serif;
   --paper: #fdf6e3;
   --paper-dark: #f5e6c8;
   --ink: #3b2f1e;
@@ -23,7 +24,7 @@ body {
     radial-gradient(ellipse at 20% 10%, #3d2a10 0%, transparent 50%),
     radial-gradient(ellipse at 80% 90%, #1a0f05 0%, transparent 50%);
   min-height: 100vh;
-  font-family: 'Lora', Georgia, serif;
+  font-family: var(--main-font);
   color: var(--ink);
   padding: 0 0 60px;
 }

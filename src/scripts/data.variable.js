@@ -1,4 +1,10 @@
 import globalVariables from '../config/globalVariables.js';
+import fonts from '../config/fonts.js';
+
+document.documentElement.style.setProperty(
+    '--main-font',
+    fonts[globalVariables.FONT] || fonts.handwritten
+);
 
 // Data variables are injected from `src/config/globalVariables.js` into
 // HTML elements using the `data-variable` attribute.

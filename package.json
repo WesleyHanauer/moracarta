@@ -1,0 +1,32 @@
+{
+  "name": "moracarta",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node src/scripts/setup.js",
+    "dev": "vite --config vite.config.mjs",
+    "build": "vite build --config vite.config.mjs",
+    "preview": "vite preview --config vite.config.mjs",
+    "deploy": "node src/scripts/deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WesleyHanauer/moracarta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WesleyHanauer/moracarta/issues"
+  },
+  "homepage": "https://github.com/WesleyHanauer/moracarta#readme",
+  "devDependencies": {
+    "vite": "^8.2.2",
+    "wrangler": "^4.126.0"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.6.0"
+  }
+}

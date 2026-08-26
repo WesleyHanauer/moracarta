@@ -183,7 +183,7 @@ function renderLetters() {
   orderedLetters.forEach((letter) => {
     const palette = generatePalette(letter);
     const link = document.createElement('a');
-    link.href = `./letters.view.html?id=${letter.id}`;
+    link.href = `./views/letters.view.html?id=${letter.id}`;
     link.className = 'envelope-link';
 
     link.innerHTML = `
