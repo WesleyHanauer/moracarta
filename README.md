@@ -1,110 +1,336 @@
-[🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)
-
 # Moracarta
+
+[🇺🇸 English](README.md) | [🇧🇷 Português](docs/README.pt-BR.md)
+
+Create a personalized romantic website with digital letters, music, animations, and more — without needing a backend.
 
 ## Table of Contents
 
-1. [Description](#description)
-
-2. [Configuration](#configuration)
-
-3. [Deployment](#deployment)
-
-4. [Technologies](#technologies)
-
-5. [Project Structure](#project-structure)
-
-6. [License](#license)
+1. [Demo](#demo)
+2. [Getting Started](#getting-started)
+3. [Configuration](#configuration)
+4. [Music](#music)
+5. [Deployment](#deployment)
+6. [Technologies](#technologies)
+7. [Project Structure](#project-structure)
+8. [License](#license)
 
 ## Demo
 
-![Main page demo](./assets/images/demo-main-page.png)
+![Main page demo](./public/assets/images/demo-main-page.png)
 
-![Envelope anim demo](./assets/images/demo-animation.gif)
+![Envelope animation demo](./public/assets/images/demo-animation.gif)
 
-## Description
+## Getting Started
 
-- This is a template for romantic letters that runs entirely without a server. You can host it for free on [Cloudflare Pages](https://pages.cloudflare.com/) or GitHub Pages.
-- The idea is to make it easy to create a personalized gift for your partner.
-- The app includes optional music for the main page and for each individual letter.
+Moracarta is designed to make creating a personalized romantic website as simple as possible.
+
+### Requirements
+
+You need:
+
+- [Node.js](https://nodejs.org/)
+- npm
+
+### 1. Clone the Repository
+
+Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/WesleyHanauer/moracarta.git
+cd moracarta
+npm install
+```
+
+### 2. Configure Your Website
+
+Run the interactive setup:
+
+```bash
+npm run setup
+```
+
+Moracarta will guide you through the configuration of your website, including:
+
+- Application language
+- Project name
+- Application title
+- Password protection
+- Font
+- Music
+- Main page messages
+- Your name
+- Envelope text
+
+The setup generates the configuration file:
+
+```text
+src/config/globalVariables.js
+```
+
+### 3. Start the Development Server
+
+After completing the setup, start the development server:
+
+```bash
+npm run dev
+```
+
+This allows you to preview your website while developing.
+
+### 4. Add Your Letters
+
+Your letters are stored in:
+
+```text
+src/data/letters.js
+```
+
+Add or edit your letters there.
+
+A template is provided at the top of the file showing how to create additional letters.
+
+### 5. Build Your Website
+
+When you are happy with your website, create a production build:
+
+```bash
+npm run build
+```
+
+The production files will be generated inside:
+
+```text
+dist/
+```
+
+### 6. Preview the Production Build
+
+You can preview the production version locally with:
+
+```bash
+npm run preview
+```
+
+This allows you to verify the version that will be deployed.
+
+### 7. Deploy
+
+Once everything looks good, deploy your website:
+
+```bash
+npm run deploy
+```
+
+Your website will be built and deployed to Cloudflare Pages.
+
+That's it! ❤️
 
 ## Configuration
 
 ### General Configuration
 
-- Most of the text displayed throughout the app can be customized. You can find the available settings in `/src/config/globalVariables.js`.
+Most of the website's configurable values are generated automatically by the setup script and stored in:
 
-- It's recommended to open the website at least once before changing the global variables, so you can get a better idea of what each variable controls.
+```text
+src/config/globalVariables.js
+```
 
-- You can also check out the demo:
-  [Moracarta Cloudflare Pages](https://moracarta.pages.dev) or [Moracarta Github Pages](https://wesleyhanauer.github.io/moracarta)
+You can manually modify this file after running the setup if necessary.
+
+It is recommended to open the website at least once before modifying the configuration so you can understand what each option controls.
 
 ### Letters
 
-- Each letter is an object inside `/src/data/letters.js`. I recommend writing your letters separately in Google Docs and then pasting them into the corresponding letter.
-- To create a new letter, follow the template provided at the top of the file.
-- Music file paths must end with `.mp3`.
+Letters are stored in:
 
-### Music
+```text
+src/data/letters.js
+```
 
-- To enable music, set the `MUSIC` variable in `globalVariables.js` to `true`.
-- The music inside `assets/music` is copyright free and only used as an example on how to setup your own music, feel free to use them though.
+Each letter is represented as an object.
 
-#### Main Page
+A template is provided at the top of the file showing how to create additional letters.
 
-- Set `USE_MAIN_PAGE_MUSIC` in `globalVariables.js` to `true`, then set the path to your chosen song in `MAIN_PAGE_MUSIC_PATH`.
+It is recommended to write longer letters separately in an editor such as Google Docs and then paste them into the corresponding letter object.
 
-#### Individual Letters
+Music paths for individual letters must point to `.mp3` files.
 
-- You can set a different song for each letter. The song will start playing once the user opens the letter and interacts with the page.
-- You can also choose the timestamp the song starts playing.
+## Music
 
-#### Downloading Music
+Moracarta supports optional music on the main page and individual letters.
 
-- It's recommended you use [SpotDL](https://github.com/spotDL/spotify-downloader) to download the mp3 music.
+Music can be configured during the setup process:
+
+```bash
+npm run setup
+```
+
+### Individual Letter Music
+
+Individual letters can have their own music.
+
+The music starts when the user opens the letter and interacts with the page, according to the browser's autoplay restrictions.
+
+You can also configure the timestamp at which the music starts.
+
+Only use music that you have permission to distribute and host. Royalty-free music libraries are recommended for finding suitable tracks.
+
+For more information about music configuration, see [docs/MUSIC.md](docs/MUSIC.md).
 
 ## Deployment
 
-- Since this is a static website, there are several free hosting services you can use.
-- [Cloudflare Pages](https://pages.cloudflare.com/) is recommended because the contents of the letters will be visible in the repository if you use GitHub Pages, while Cloudflare Pages can deploy from private repositories.
-- Check how you can deploy your repository on Cloudflare [here](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/#deploy-with-cloudflare-pages).
+Moracarta generates a static website, so it does not require a backend server.
+
+### Build
+
+Create a production build with:
+
+```bash
+npm run build
+```
+
+This generates the production files inside:
+
+```text
+dist/
+```
+
+### Preview
+
+Before deploying, you can preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Cloudflare Pages
+
+Cloudflare Pages is recommended for hosting Moracarta websites.
+
+Deploy your website with:
+
+```bash
+npm run deploy
+```
+
+The deployment command:
+
+1. Builds the production version.
+2. Generates the `dist/` directory.
+3. Deploys `dist/` to Cloudflare Pages.
+4. Uses the project name configured during setup.
+
+The project name is configured when you run:
+
+```bash
+npm run setup
+```
+
+After making changes to your website, simply run:
+
+```bash
+npm run deploy
+```
+
+again.
+
+The new version will be deployed to the same Cloudflare Pages project rather than creating a new website.
+
+### GitHub Pages
+
+Moracarta can also be hosted using GitHub Pages.
+
+Keep in mind that if the repository is public, the contents of your letters will also be publicly visible in the repository.
+
+For private letters, a private repository and a hosting provider that supports private repositories may be preferable.
 
 ## Technologies
 
-1. JavaScript
-2. HTML
-3. CSS
+- JavaScript
+- HTML
+- CSS
+- Vite
+- Wrangler
+- Node.js
 
 ## Project Structure
 
 ```text
-digital-love-letters/
+moracarta/
+
 ├── src/
 │   ├── config/
 │   │   └── globalVariables.js
+│   │
 │   ├── data/
 │   │   └── letters.js
+│   │
 │   ├── styles/
+│   │
 │   ├── scripts/
+│   │   ├── setup.js
+│   │   └── deploy.js
+│   │
 │   ├── views/
+│   │
 │   └── i18n/
+│
+├── public/
+│
 ├── assets/
 │   ├── images/
 │   └── music/
+│
+├── index.html
+├── package.json
 ├── README.md
 ├── README.pt-BR.md
 └── LICENSE
 ```
 
-- `src/config/globalVariables.js` — General site configuration.
-- `src/data/letters.js` — Letter content.
-- `src/styles/` — General styling and animations.
-- `src/scripts/` — Animation and translation logic.
-- `src/views/` — The app's HTML pages.
-- `assets/images/` — Images used by the website.
-- `assets/music/` — Music used in the letters and on the main page.
-- `src/i18n/` — Available languages for translating the app.
+### Important Files and Directories
+
+`src/config/globalVariables.js`
+
+General configuration generated by the setup script.
+
+`src/data/letters.js`
+
+Contains the content and configuration of individual letters.
+
+`src/styles/`
+
+Website styling, animations, and visual effects.
+
+`src/scripts/`
+
+Application logic, setup, deployment, animations, and other scripts.
+
+`src/views/`
+
+Additional HTML pages and templates used by the application.
+
+`src/i18n/`
+
+Translation files and language configuration.
+
+`assets/images/`
+
+Images used by the website.
+
+`assets/music/`
+
+Music files used in the letters and on the main page.
+
+`public/`
+
+Static files that should be copied directly into the production build.
+
+`index.html`
+
+The main entry point of the website.
 
 ## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
