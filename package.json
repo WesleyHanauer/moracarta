@@ -4,7 +4,8 @@
   "description": "[🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)",
   "main": "index.js",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "setup": "node src/scripts/setup"
   },
   "repository": {
     "type": "git",
