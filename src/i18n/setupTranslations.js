@@ -27,6 +27,15 @@ export default {
             second: "Enter the second password parameter:"
         },
 
+        font: {
+            message: "What is the font style of the application?",
+            choices: [
+                { name: "Handwritten — Personal and romantic", value: "handwritten" },
+                { name: "Classic — Elegant and traditional", value: "classic" },
+                { name: "Modern — Clean and simple", value: "modern" }
+            ]
+        },
+
         music: {
             enable: "Enable music?",
             mainPage: "Play music on the main page?",

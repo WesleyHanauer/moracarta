@@ -49,6 +49,11 @@ if (USE_PASSWORD) {
     });
 }
 
+const FONT = await select({
+    message: setupTranslations.en.font.message,
+    choices: setupTranslations.en.font.choices
+});
+
 const MUSIC = await confirm({
     message: t.music.enable,
     default: true
@@ -106,6 +111,7 @@ const TITLE = ${JSON.stringify(TITLE)};
 const USE_PASSWORD = ${USE_PASSWORD};
 const PASSWORD1 = ${JSON.stringify(PASSWORD1)};
 const PASSWORD2 = ${JSON.stringify(PASSWORD2)};
+const FONT = ${JSON.stringify(FONT)};
 
 const MUSIC = ${MUSIC};
 const USE_MAIN_PAGE_MUSIC = ${USE_MAIN_PAGE_MUSIC};
@@ -128,6 +134,7 @@ const globalVariables = {
     USE_PASSWORD,
     PASSWORD1,
     PASSWORD2,
+    FONT,
     MUSIC,
     USE_MAIN_PAGE_MUSIC,
     MAIN_PAGE_MUSIC_PATH,

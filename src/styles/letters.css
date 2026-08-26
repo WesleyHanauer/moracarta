@@ -5,6 +5,7 @@
 }
 
 :root {
+  --main-font: 'Cormorant Garamond', serif;
   --paper: #fdf6e3;
   --paper-dark: #f5e6c8;
   --ink: #3b2f1e;
@@ -19,7 +20,7 @@ body {
     radial-gradient(ellipse at 20% 10%, #3d2a10 0%, transparent 50%),
     radial-gradient(ellipse at 80% 90%, #1a0f05 0%, transparent 50%);
   min-height: 100vh;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--main-font);
   font-optical-sizing: auto;
   color: var(--ink);
   padding: 0 0 60px;
@@ -208,7 +209,7 @@ body {
   background-position: 0 36px;
   overflow: hidden;
   z-index: 0;
-  font-family: 'EB Garamond';
+  font-family: var(--main-font);
   font-optical-sizing: auto;
   letter-spacing: 0.01em;
 }
@@ -293,7 +294,7 @@ body {
 }
 
 .letter-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--main-font);
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
@@ -317,7 +318,7 @@ body {
   font-size: 16px;
   line-height: 2;
   color: var(--ink);
-  font-family: 'EB Garamond', Georgia, serif;
+  font-family: var(--main-font);
   text-align: justify;
   white-space: pre-wrap;
   font-style: italic;
