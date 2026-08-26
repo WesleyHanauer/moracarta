@@ -10,8 +10,17 @@ const LANGUAGE = await select({
     message: "What is the main language of the application?",
     choices: [
         { name: "English", value: "en" },
-        { name: "Português (Brasil)", value: "pt-BR" }
-    ]
+        { name: "Português (Brasil)", value: "pt-BR" },
+        { name: "Español", value: "es" },
+        { name: "Français", value: "fr" },
+        { name: "Deutsch", value: "de" },
+        { name: "Italiano", value: "it" },
+        { name: "日本語", value: "ja" },
+        { name: "한국어", value: "ko" },
+        { name: "中文", value: "zh" },
+        { name: "Русский", value: "ru" }
+    ],
+    pageSize: 3
 });
 
 const TITLE = await input({
