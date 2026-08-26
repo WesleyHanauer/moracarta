@@ -15,7 +15,7 @@ const FONT = "default";
 
 const MUSIC = true;
 const USE_MAIN_PAGE_MUSIC = true;
-const MAIN_PAGE_MUSIC_PATH = "./../assets/music/leberch-romantic-date.mp3";
+const MAIN_PAGE_MUSIC_PATH = "/assets/music/leberch-romantic-date.mp3";
 
 const TEXT_TOP = "Here you can put a custom message";
 const TEXT_BOTTOM = "Here you can put another custom message";
