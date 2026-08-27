@@ -130,11 +130,11 @@ function updateMusicButtonIcon(isPaused) {
   if (isPaused) {
     musicButton.setAttribute('aria-label', 'Play music');
     musicButtonIcon.setAttribute('alt', 'Play music');
-    musicButtonIcon.src = '../../assets/images/play.png';
+    musicButtonIcon.src = '/assets/images/play.png';
   } else {
     musicButton.setAttribute('aria-label', 'Pause music');
     musicButtonIcon.setAttribute('alt', 'Pause music');
-    musicButtonIcon.src = '../../assets/images/pause.png';
+    musicButtonIcon.src = '/assets/images/pause.png';
   }
 }
 
@@ -183,7 +183,7 @@ function renderLetters() {
   orderedLetters.forEach((letter) => {
     const palette = generatePalette(letter);
     const link = document.createElement('a');
-    link.href = `./views/letters.view.html?id=${letter.id}`;
+    link.href = `./src/views/letters.view.html?id=${letter.id}`;
     link.className = 'envelope-link';
 
     link.innerHTML = `
