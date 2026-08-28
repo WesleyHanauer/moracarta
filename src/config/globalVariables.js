@@ -3,18 +3,11 @@
  */
 
 const LANGUAGE = "en";
-const PROJECT_NAME = "moracarta";
+
+const PROJECT_NAME = "romantic-gift";
 const TITLE = "Letters to my love";
 
-const USE_PASSWORD = false;
-const PASSWORD1 = "";
-const PASSWORD2 = "";
-
-const FONT = "default";
-
-const MUSIC = true;
-const USE_MAIN_PAGE_MUSIC = true;
-const MAIN_PAGE_MUSIC_PATH = "/assets/music/leberch-romantic-date.mp3";
+const FONT = "handwritten";
 
 const TEXT_TOP = "Here you can put a custom message";
 const TEXT_BOTTOM = "Here you can put another custom message";
@@ -31,13 +24,7 @@ const globalVariables = {
     PROJECT_NAME,
     TITLE,
     YOUR_NAME,
-    USE_PASSWORD,
-    PASSWORD1,
-    PASSWORD2,
     FONT,
-    MUSIC,
-    USE_MAIN_PAGE_MUSIC,
-    MAIN_PAGE_MUSIC_PATH,
     TEXT_TOP,
     TEXT_BOTTOM,
     CLOSED_LETTER_TEXT_TOP_LINE,

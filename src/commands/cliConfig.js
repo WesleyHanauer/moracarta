@@ -9,7 +9,9 @@ const COMMANDS = new Set([
     "dev",
     "build",
     "preview",
-    "deploy"
+    "deploy",
+    "add",
+    "remove"
 ]);
 
 const command = process.argv[2];
@@ -25,10 +27,17 @@ if (!COMMANDS.has(command)) {
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 
-const child = command === "setup" || command === "deploy"
+const child =
+        command === "setup" ||
+        command === "deploy" ||
+        command === "add" ||
+        command === "remove"
     ? spawn(
         process.execPath,
-        [resolve(packageRoot, "src", "commands", `${command}.js`), ...commandArguments],
+        [
+            resolve(packageRoot, "src", "commands", `${command}.js`),
+            ...commandArguments
+        ],
         { stdio: "inherit" }
     )
     : spawn(

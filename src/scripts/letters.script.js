@@ -1,5 +1,4 @@
 import { getTranslation } from './i18n.js';
-import globalVariables from '../config/globalVariables.js';
 import { letters } from '../data/letters.js';
 
 console.log('letters.script loaded');
@@ -86,123 +85,14 @@ if (!letter) {
 
   document.getElementById('letter-date').textContent = letter.date;
   document.getElementById('letter-title').textContent = letter.title;
-  document.getElementById('letter-body').innerHTML = letter.content;
+  document.getElementById('letter-body').innerHTML = letter.content
+      .split(/\n\s*\n/)
+      .filter(paragraph => paragraph.trim())
+      .map(paragraph => `<p>${paragraph.trimEnd()}</p>`)
+      .join('');
 
   applyEnvelopePalette(letter);
   document.querySelector('.envelope-stage').classList.add('ready');
-
-  const audioElement = document.getElementById('letter-audio');
-  let musicButton;
-  let musicButtonIcon;
-  let isAudioUnlocked = false;
-
-  function createMusicToggle() {
-    musicButton = document.createElement('button');
-    musicButton.id = 'music-toggle';
-    musicButton.className = 'music-toggle';
-    musicButton.type = 'button';
-
-    musicButtonIcon = document.createElement('img');
-    musicButtonIcon.id = 'music-toggle-icon';
-    musicButtonIcon.src = '/assets/images/pause.png';
-    musicButtonIcon.alt = 'Pause music';
-
-    musicButton.appendChild(musicButtonIcon);
-    document.body.appendChild(musicButton);
-    updateMusicButtonIcon(audioElement ? audioElement.paused : true);
-  }
-
-  function updateMusicButtonIcon(isPaused) {
-    if (!musicButton || !musicButtonIcon) {
-      return;
-    }
-
-    if (isPaused) {
-      musicButton.setAttribute('aria-label', 'Play music');
-      musicButtonIcon.setAttribute('alt', 'Play music');
-      musicButtonIcon.src = '/assets/images/play.png';
-    } else {
-      musicButton.setAttribute('aria-label', 'Pause music');
-      musicButtonIcon.setAttribute('alt', 'Pause music');
-      musicButtonIcon.src = '/assets/images/pause.png';
-    }
-  }
-
-  function fadeInAudio(audio, duration, targetVolume) {
-    if (!audio) {
-      return;
-    }
-
-    audio.volume = 0;
-    let startTime = null;
-
-    function step(timestamp) {
-      if (startTime === null) {
-        startTime = timestamp;
-      }
-
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      audio.volume = targetVolume * progress;
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    }
-
-    window.requestAnimationFrame(step);
-  }
-
-  function removeAudioUnlockListeners() {
-    document.removeEventListener('pointerdown', earlyUnlockHandler);
-    document.removeEventListener('touchstart', earlyUnlockHandler);
-    document.removeEventListener('pointerdown', unlockHandler);
-    document.removeEventListener('touchstart', unlockHandler);
-  }
-
-  let earlyUnlockHandler = null;
-  let unlockHandler = null;
-
-  // Only load letter audio when the global music toggle is enabled and the
-  // current letter has a non-empty `music` filename configured.
-  const enableLetterMusic = globalVariables.MUSIC && letter.music && letter.music.trim();
-
-  if (enableLetterMusic) {
-    const musicFileName = letter.music && letter.music.trim().endsWith('.mp3')
-      ? letter.music.trim()
-      : `${letter.music.trim()}.mp3`;
-
-    const source = document.createElement('source');
-    source.src = `/assets/music/${musicFileName}`;
-    source.type = 'audio/mpeg';
-    audioElement.appendChild(source);
-    audioElement.loop = true;
-    audioElement.volume = 0;
-    audioElement.autoplay = true;
-    audioElement.muted = true;
-    audioElement.preload = 'auto';
-    audioElement.load();
-
-    earlyUnlockHandler = () => {
-      if (isAudioUnlocked) {
-        return;
-      }
-
-      removeAudioUnlockListeners();
-      audioElement.play().then(() => {
-        if (!isAudioUnlocked) {
-          isAudioUnlocked = true;
-          audioElement.muted = false;
-          fadeInAudio(audioElement, 2000, 0.25);
-        }
-      }).catch(() => {
-        // Silent failure is expected on some browsers until the user interacts.
-      });
-    };
-
-    document.addEventListener('pointerdown', earlyUnlockHandler, { once: true });
-    document.addEventListener('touchstart', earlyUnlockHandler, { once: true });
-  }
 
   const sortedLetters = letters.slice().sort((first, second) => first.id - second.id);
   const currentIndex = sortedLetters.findIndex((entry) => entry.id === requestedId);
@@ -244,66 +134,6 @@ if (!letter) {
     document.getElementById('letter-nav').classList.add('visible');
     document.getElementById('envelope-wrap').style.display = 'none';
 
-    const enableLetterMusic = globalVariables.MUSIC && letter.music && letter.music.trim();
-
-    if (enableLetterMusic) {
-      audioElement.currentTime = letter.startTime || 0;
-      audioElement.volume = 0;
-
-      createMusicToggle();
-
-      function tryPlay() {
-        audioElement.play().then(() => {
-          if (!isAudioUnlocked) {
-            isAudioUnlocked = true;
-            audioElement.muted = false;
-            fadeInAudio(audioElement, 2000, 0.25);
-            removeAudioUnlockListeners();
-          }
-          updateMusicButtonIcon(audioElement.paused);
-        }).catch(() => {
-          if (!isAudioUnlocked) {
-            updateMusicButtonIcon(audioElement.paused);
-            unlockHandler = () => {
-              if (isAudioUnlocked) {
-                return;
-              }
-
-              isAudioUnlocked = true;
-              audioElement.play().then(() => {
-                audioElement.muted = false;
-                fadeInAudio(audioElement, 2000, 0.25);
-                updateMusicButtonIcon(audioElement.paused);
-              }).catch(() => {
-                updateMusicButtonIcon(audioElement.paused);
-              });
-              removeAudioUnlockListeners();
-            };
-
-            document.addEventListener('pointerdown', unlockHandler, { once: true });
-            document.addEventListener('touchstart', unlockHandler, { once: true });
-          } else {
-            updateMusicButtonIcon(audioElement.paused);
-          }
-        });
-      }
-
-      tryPlay();
-
-      musicButton.addEventListener('click', () => {
-        if (audioElement.paused) {
-          audioElement.play().then(() => {
-            audioElement.muted = false;
-            updateMusicButtonIcon(audioElement.paused);
-          }).catch(() => {
-            updateMusicButtonIcon(audioElement.paused);
-          });
-        } else {
-          audioElement.pause();
-          updateMusicButtonIcon(audioElement.paused);
-        }
-      });
-    }
   }, 2100);
 }
 

@@ -1,5 +1,4 @@
 import { getTranslation } from './i18n.js';
-import globalVariables from '../config/globalVariables.js';
 
 // `data/letters.js` is loaded as a module, but the project also exposes
 // the list globally for compatibility with the current static script setup.
@@ -9,29 +8,6 @@ import globalVariables from '../config/globalVariables.js';
 const letters = window.letters ?? (typeof letters !== 'undefined' ? letters : []);
 
 const listContainer = document.getElementById('letter-list');
-const backgroundMusic = document.getElementById('bg-music');
-const musicButton = document.getElementById('music-toggle');
-const musicButtonIcon = document.getElementById('music-toggle-icon');
-
-// Global audio control: `MUSIC` disables all music, while
-// `USE_MAIN_PAGE_MUSIC` controls the index page background track.
-const useMainPageMusic = globalVariables.MUSIC && globalVariables.USE_MAIN_PAGE_MUSIC;
-
-if (!globalVariables.MUSIC || !useMainPageMusic) {
-  if (backgroundMusic) {
-    backgroundMusic.remove();
-  }
-
-  if (musicButton) {
-    musicButton.remove();
-  }
-} else {
-  if (backgroundMusic && globalVariables.MAIN_PAGE_MUSIC_PATH) {
-    backgroundMusic.src = globalVariables.MAIN_PAGE_MUSIC_PATH;
-    backgroundMusic.preload = 'auto';
-    backgroundMusic.load();
-  }
-}
 
 const paletteFamilies = [
   { hue: 18, sat: 54, light: 88, sealHue: 345, sealSat: 76, sealLight: 42 },
@@ -75,81 +51,6 @@ function generatePalette(letter) {
   const text = `hsl(${family.hue}, 22%, 18%)`;
 
   return { envelope, flap, shadow, base, seal, text };
-}
-
-function fadeInAudio(audio, duration, targetVolume) {
-  if (!audio) {
-    return;
-  }
-
-  audio.volume = 0;
-  let startTime = null;
-
-  function step(timestamp) {
-    if (startTime === null) {
-      startTime = timestamp;
-    }
-
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    audio.volume = targetVolume * progress;
-
-    if (progress < 1) {
-      window.requestAnimationFrame(step);
-    }
-  }
-
-  window.requestAnimationFrame(step);
-}
-
-function updateMusicButtonIcon(isPaused) {
-  if (!musicButton || !musicButtonIcon) {
-    return;
-  }
-
-  if (isPaused) {
-    musicButton.setAttribute('aria-label', 'Play music');
-    musicButtonIcon.setAttribute('alt', 'Play music');
-    musicButtonIcon.src = '/assets/images/play.png';
-  } else {
-    musicButton.setAttribute('aria-label', 'Pause music');
-    musicButtonIcon.setAttribute('alt', 'Pause music');
-    musicButtonIcon.src = '/assets/images/pause.png';
-  }
-}
-
-function tryPlayBackgroundMusic() {
-  if (!backgroundMusic) {
-    return;
-  }
-
-  // Browsers often block autoplay until the user interacts.
-  // We attempt playback immediately and fall back to an interaction-locked retry.
-  // Autoplay can be blocked until the user interacts with the page.
-  // If playback fails, this code installs a one-time unlock listener.
-  backgroundMusic.play().then(() => {
-    fadeInAudio(backgroundMusic, 2000, 0.25);
-    updateMusicButtonIcon(backgroundMusic.paused);
-  }).catch(() => {
-    updateMusicButtonIcon(backgroundMusic.paused);
-
-    const unlockMusic = () => {
-      backgroundMusic.play().then(() => {
-        fadeInAudio(backgroundMusic, 2000, 0.25);
-        updateMusicButtonIcon(backgroundMusic.paused);
-      }).catch(() => {
-        updateMusicButtonIcon(backgroundMusic.paused);
-      });
-
-      document.removeEventListener('pointerdown', unlockMusic);
-      document.removeEventListener('touchstart', unlockMusic);
-      document.removeEventListener('keydown', unlockMusic);
-    };
-
-    document.addEventListener('pointerdown', unlockMusic, { once: true });
-    document.addEventListener('touchstart', unlockMusic, { once: true });
-    document.addEventListener('keydown', unlockMusic, { once: true });
-  });
 }
 
 function renderLetters() {
@@ -203,29 +104,4 @@ function renderLetters() {
 }
 
 renderLetters();
-
-if (useMainPageMusic) {
-  updateMusicButtonIcon(true);
-
-  const startMusicOnInteraction = () => {
-    if (backgroundMusic) {
-      tryPlayBackgroundMusic();
-    }
-  };
-
-  document.addEventListener('pointerdown', startMusicOnInteraction, { once: true });
-  document.addEventListener('touchstart', startMusicOnInteraction, { once: true });
-  document.addEventListener('keydown', startMusicOnInteraction, { once: true });
-
-  if (musicButton) {
-    musicButton.addEventListener('click', () => {
-      if (backgroundMusic && backgroundMusic.paused) {
-        tryPlayBackgroundMusic();
-      } else if (backgroundMusic) {
-        backgroundMusic.pause();
-        updateMusicButtonIcon(backgroundMusic.paused);
-      }
-    });
-  }
-}
 

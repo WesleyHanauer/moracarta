@@ -2,18 +2,17 @@
 
 # Moracarta
 
-Create a personalized romantic website with digital letters, music, animations, and more — without needing a backend.
+Create a personalized romantic website with digital letters, animations, and more — without needing a backend.
 
 ## Table of Contents
 
 1. [Demo](#demo)
 2. [Getting Started](#getting-started)
 3. [Configuration](#configuration)
-4. [Music](#music)
-5. [Deployment](#deployment)
-6. [Technologies](#technologies)
-7. [Project Structure](#project-structure)
-8. [License](#license)
+4. [Deployment](#deployment)
+5. [Technologies](#technologies)
+6. [Project Structure](#project-structure)
+7. [License](#license)
 
 ## Demo
 
@@ -55,9 +54,7 @@ Moracarta will guide you through the configuration of your website, including:
 - Application language
 - Project name
 - Application title
-- Password protection
 - Font
-- Music
 - Main page messages
 - Your name
 - Envelope text
@@ -153,30 +150,6 @@ Each letter is represented as an object.
 A template is provided at the top of the file showing how to create additional letters.
 
 It is recommended to write longer letters separately in an editor such as Google Docs and then paste them into the corresponding letter object.
-
-Music paths for individual letters must point to `.mp3` files.
-
-## Music
-
-Moracarta supports optional music on the main page and individual letters.
-
-Music can be configured during the setup process:
-
-```bash
-npm run setup
-```
-
-### Individual Letter Music
-
-Individual letters can have their own music.
-
-The music starts when the user opens the letter and interacts with the page, according to the browser's autoplay restrictions.
-
-You can also configure the timestamp at which the music starts.
-
-Only use music that you have permission to distribute and host. Royalty-free music libraries are recommended for finding suitable tracks.
-
-For more information about music configuration, see [docs/MUSIC.md](docs/MUSIC.md).
 
 ## Deployment
 
@@ -279,8 +252,7 @@ moracarta/
 ├── public/
 │
 ├── assets/
-│   ├── images/
-│   └── music/
+│   └── images/
 │
 ├── index.html
 ├── package.json
@@ -318,10 +290,6 @@ Translation files and language configuration.
 `assets/images/`
 
 Images used by the website.
-
-`assets/music/`
-
-Music files used in the letters and on the main page.
 
 `public/`
 

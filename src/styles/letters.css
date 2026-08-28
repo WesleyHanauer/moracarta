@@ -321,11 +321,11 @@ body {
   font-family: var(--main-font);
   text-align: justify;
   white-space: pre-wrap;
+  tab-size: 4;
   font-style: italic;
 }
 
 .letter-body p {
-  text-indent: 2em;
   margin-bottom: 1.2em;
 }
 
@@ -392,49 +392,6 @@ body {
   padding: 60px 24px;
   color: #a08060;
   font-style: italic;
-}
-
-.music-toggle {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 10001;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-}
-
-.music-toggle img {
-  display: block;
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.12));
-}
-
-.music-toggle:hover,
-.music-toggle:focus {
-  transform: translateY(-2px) scale(1.03);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
-  outline: none;
-}
-
-.music-toggle:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background: #ededed;
 }
 
 #canvas-hearts {
