@@ -108,6 +108,7 @@ async function main() {
         message: `Create a Google Doc for all your letters;
 ${GOOGLE_DOCS_URL} (Ctrl + click to open)
 Each letter should have it's own tab;
+Your Google Doc must be public;
 (IMPORTANT) Use 5 spaces instead of TAB for identation;
 You will have to add each letter individually;
 Paste the Google Docs tab URL:`

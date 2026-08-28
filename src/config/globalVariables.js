@@ -9,9 +9,9 @@ const TITLE = "Letters to my love";
 
 const FONT = "handwritten";
 
-const TEXT_TOP = "Here you can put a custom message";
-const TEXT_BOTTOM = "Here you can put another custom message";
-const YOUR_NAME = "— Name ♡";
+const TEXT_TOP = "Every letter here holds a piece of everything I feel for you.";
+const TEXT_BOTTOM = "If I could choose again, I'd choose you in every version of my life. ♡";
+const YOUR_NAME = "~ Peter ♡";
 
 const CLOSED_LETTER_TEXT_TOP_LINE =
     "&#10084;&#65039; To Mary Jane &#10084;&#65039;";
