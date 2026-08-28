@@ -1,11 +1,5 @@
 import { getTranslation } from './i18n.js';
-
-// `data/letters.js` is loaded as a module, but the project also exposes
-// the list globally for compatibility with the current static script setup.
-// The letters data is made available through modules and a global fallback.
-// This allows the same data to be re-used by both modern module scripts and
-// legacy/global consumers without changing the source data format.
-const letters = window.letters ?? (typeof letters !== 'undefined' ? letters : []);
+import { letters } from '../data/lettersLoader.js';
 
 const listContainer = document.getElementById('letter-list');
 

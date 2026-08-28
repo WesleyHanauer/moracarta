@@ -70,7 +70,6 @@ function appendLetter(lettersFile, letter) {
 ${letterObject}
 ];
 
-window.letters = letters;
 `;
     }
 

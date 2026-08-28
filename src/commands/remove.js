@@ -97,14 +97,12 @@ function generateLettersFile(letters) {
 ${objects.join(",\n")}
 ];
 
-window.letters = letters;
 `;
 }
 
 function generateEmptyLettersFile() {
     return `export const letters = [];
 
-window.letters = letters;
 `;
 }
 

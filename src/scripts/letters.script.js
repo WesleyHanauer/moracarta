@@ -1,5 +1,5 @@
 import { getTranslation } from './i18n.js';
-import { letters } from '../data/letters.js';
+import { letters } from '../data/lettersLoader.js';
 
 console.log('letters.script loaded');
 
