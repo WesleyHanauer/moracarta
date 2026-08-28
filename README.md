@@ -1,6 +1,10 @@
-## What is Moracarta?
+# Moracarta
 
-Moracarta is a CLI tool that turns your letters into a personalized love-letter website that you can deploy for free.  
+**Create your own personalized love-letter website and deploy it completely for free.**
+
+🌐 **[Live Demo](https://moracarta.pages.dev/)** · ⭐ **[GitHub Pages Demo](https://wesleyhanauer.github.io/moracarta/)**
+
+## Features
 
 💌 Multiple letters  
 📝 Google Docs as your writing interface  
@@ -8,9 +12,9 @@ Moracarta is a CLI tool that turns your letters into a personalized love-letter 
 🌐 Free web deployment  
 🔒 No database required  
 
-## You can have your own love letters website running on the web — completely free — in less than 5 minutes.
+## **Get your own working URL in less than 5 minutes**
 
-## And it's as simple as:
+**And it's as simple as:**
 
 ```bash
 git clone https://github.com/WesleyHanauer/moracarta
@@ -23,8 +27,8 @@ moracarta deploy
 
 ### App Demo
 <p align="center">
-    <img src="public/assets/images/demo-main-page.png" width="350" height="350">
-    <img src="public/assets/images/demo-animation.gif" width="350" height="350">
+    <img src="public/assets/images/demo-main-page.png" height="400">
+    <img src="public/assets/images/demo-animation.gif" height="400">
 </p>
 
 ### Setup Demo
@@ -34,7 +38,7 @@ moracarta deploy
 
 ## That's it.
 
-All that's left is to write your custom letters in Google Docs and, if you want, customize the two texts displayed on the main page.
+All that's left is to write your letters in Google Docs and, if you want, customize the two texts displayed on the main page.
 
 ## Requirements
 
@@ -63,6 +67,15 @@ moracarta remove
 ```
 
 Select the letter you wish to remove.
+
+### Customizing the website
+
+During `moracarta setup`, you can choose from preset messages or enter your own custom text for the main page.
+
+<p align="center">
+    <img src="public/assets/images/custom-text-demo2.png" width="700"><br>
+    <img src="public/assets/images/custom-text-demo1.png" width="700">
+</p>
 
 ## License
 
