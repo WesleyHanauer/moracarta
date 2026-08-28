@@ -64,7 +64,7 @@ if (MUSIC) {
     });
 
     if (USE_MAIN_PAGE_MUSIC) {
-        MAIN_PAGE_MUSIC_PATH = "./../assets/music/" + await input({
+        MAIN_PAGE_MUSIC_PATH = "/assets/music/" + await input({
             message: "Enter the name of the main page music (see docs/MUSIC.md for more information): ",
             default: "leberch-romantic-date.mp3"
         });
