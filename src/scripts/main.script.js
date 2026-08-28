@@ -7,26 +7,6 @@ import globalVariables from '../config/globalVariables.js';
 // This allows the same data to be re-used by both modern module scripts and
 // legacy/global consumers without changing the source data format.
 const letters = window.letters ?? (typeof letters !== 'undefined' ? letters : []);
-const secretParam = globalVariables.PASSWORD1;
-const secretValue = globalVariables.PASSWORD2;
-
-// Static page protection. This is only intended to block casual visitors;
-// it is not a secure authentication mechanism because the values are client-side.
-if (globalVariables.USE_PASSWORD) {
-
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get(secretParam) !== secretValue) {
-    window.stop(); 
-    
-    document.documentElement.innerHTML = `
-      <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f4f4; color: #333; }
-      </style>
-      <h1>444 - Page Not Found</h1>
-      <p>The requested URL was not found on this server.</p>
-    `;
-  }
-}
 
 const listContainer = document.getElementById('letter-list');
 const backgroundMusic = document.getElementById('bg-music');
