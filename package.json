@@ -3,7 +3,20 @@
   "version": "2.1.1",
   "type": "module",
   "description": "",
+  "license": "MIT",
   "main": "index.js",
+  "keywords": [
+    "cli",
+    "scaffold",
+    "static-site",
+    "cloudflare",
+    "wrangler",
+    "gift",
+    "envelope",
+    "letters",
+    "romantic",
+    "html-css-js"
+  ],
   "files": [
     "index.html",
     "vite.config.mjs",
@@ -34,9 +47,7 @@
     "type": "git",
     "url": "git+https://github.com/WesleyHanauer/moracarta.git"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/WesleyHanauer/moracarta/issues"
   },
