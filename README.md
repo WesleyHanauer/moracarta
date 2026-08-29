@@ -2,7 +2,7 @@
 
 **Create your own personalized love-letter website and deploy it completely for free.**
 
-🌐 **[Live Demo](https://moracarta.pages.dev/)** · ⭐ **[GitHub Pages Demo](https://wesleyhanauer.github.io/moracarta/)**
+🌐 **[Live Demo](https://moracarta.pages.dev/)**
 
 ## Features
 
