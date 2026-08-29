@@ -20,7 +20,6 @@
 **And it's as simple as:**
 
 ```bash
-npm init -y
 npm i moracarta
 npx moracarta setup
 npx moracarta build
@@ -29,9 +28,9 @@ npx moracarta deploy
 ### What each command does
 
 - `npm i moracarta` installs Moracarta as a dependency in your project.
-- `moracarta setup` sets up Moracarta and lets you configure the website.
-- `moracarta build` builds your website using your configured letters and settings.
-- `moracarta deploy` deploys the finished website for free.
+- `npx moracarta setup` sets up Moracarta and lets you configure the website.
+- `npx moracarta build` builds your website using your configured letters and settings.
+- `npx moracarta deploy` deploys the finished website for free.
 ### App Demo
 <p align="center">
     <img src="public/assets/images/demo-main-page.png" height="400">
