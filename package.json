@@ -1,8 +1,8 @@
 {
   "name": "moracarta",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "[🇺🇸 English](README.md) | [🇧🇷 Português](README.pt-BR.md)",
+  "description": "",
   "main": "index.js",
   "bin": {
     "moracarta": "src/commands/cliConfig.js"
@@ -26,11 +26,9 @@
     "url": "https://github.com/WesleyHanauer/moracarta/issues"
   },
   "homepage": "https://github.com/WesleyHanauer/moracarta#readme",
-  "devDependencies": {
+  "dependencies": {
+    "@inquirer/prompts": "^8.6.0",
     "vite": "^8.2.2",
     "wrangler": "^4.126.0"
-  },
-  "dependencies": {
-    "@inquirer/prompts": "^8.6.0"
   }
 }
