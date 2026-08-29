@@ -20,13 +20,34 @@ const VITE_ARGS = {
     preview: ["preview"]
 };
 
+const HELP_TEXT = `
+💌 Moracarta — build your own love-letter website
+
+Usage: moracarta <command>
+
+Commands:
+  setup      Scaffold the site into your project and configure it interactively
+  add        Add a letter from a public Google Docs tab
+  remove     Remove a letter you've already added
+  dev        Start the local dev server to preview your site
+  build      Build the site for production
+  preview    Preview the production build locally
+  deploy     Build and deploy the site to Cloudflare Pages
+
+Run 'moracarta setup' first if you haven't already.
+`;
+
 const command = process.argv[2];
 const commandArguments = process.argv.slice(3);
 
+if (!command || command === "--help" || command === "-h") {
+    console.log(HELP_TEXT);
+    process.exit(0);
+}
+
 if (!COMMANDS.has(command)) {
-    console.error(
-        "Usage: moracarta <setup|dev|build|preview|deploy|add|remove> [options]"
-    );
+    console.error(`Unknown command: ${command}`);
+    console.log(HELP_TEXT);
     process.exit(1);
 }
 

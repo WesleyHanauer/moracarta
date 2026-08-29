@@ -1,9 +1,11 @@
 {
   "name": "moracarta",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "type": "module",
   "description": "",
   "main": "index.js",
+  "files": [ "index.html", "vite.config.mjs", "public", "src/commands", "src/config/fonts.js", "src/data/letters.example.js", "src/data/lettersLoader.js", "src/i18n", "src/scripts", "src/services", "src/styles", "src/views" ],
+  "postinstall": "node src/commands/postinstall.js",
   "bin": {
     "moracarta": "src/commands/cliConfig.js"
   },

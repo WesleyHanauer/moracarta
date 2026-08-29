@@ -1,6 +1,9 @@
 # Moracarta
 
-**Create your own personalized love-letter website and deploy it completely for free.**
+**Create your own personalized love-letter website and deploy it completely for free. Available as an npm package**
+
+[![npm version](https://img.shields.io/npm/v/moracarta)](https://www.npmjs.com/package/moracarta)
+[![npm downloads](https://img.shields.io/npm/dt/moracarta)](https://www.npmjs.com/package/moracarta)
 
 🌐 **[Live Demo](https://moracarta.pages.dev/)**
 
@@ -12,14 +15,12 @@
 🌐 Free web deployment  
 🔒 No database required  
 
-## **Get your own working URL in less than 5 minutes**
+## **You can have your own working URL in less than 5 minutes**
 
 **And it's as simple as:**
 
 ```bash
-git clone https://github.com/WesleyHanauer/moracarta
-cd moracarta
-npm install
+npm i moracarta
 moracarta setup
 moracarta build
 moracarta deploy
