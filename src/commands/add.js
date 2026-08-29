@@ -2,16 +2,15 @@
 
 import { input } from "@inquirer/prompts";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import { getDocumentText } from "../services/googleDocs.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+// After scaffolding, the real project lives in the user's cwd —
+// never in node_modules/moracarta — so everything here is
+// resolved against process.cwd(), not __dirname.
 const DATA_DIRECTORY = resolve(
-    __dirname,
-    "..",
+    process.cwd(),
+    "src",
     "data"
 );
 

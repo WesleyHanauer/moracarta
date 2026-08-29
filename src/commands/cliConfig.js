@@ -14,18 +14,24 @@ const COMMANDS = new Set([
     "remove"
 ]);
 
+const VITE_ARGS = {
+    dev: [],
+    build: ["build"],
+    preview: ["preview"]
+};
+
 const command = process.argv[2];
 const commandArguments = process.argv.slice(3);
 
 if (!COMMANDS.has(command)) {
     console.error(
-        "Usage: moracarta <setup|dev|build|preview|deploy> [options]"
+        "Usage: moracarta <setup|dev|build|preview|deploy|add|remove> [options]"
     );
     process.exit(1);
 }
 
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+const npxCommand = process.platform === "win32" ? "npx.cmd" : "npx";
 
 const child =
         command === "setup" ||
@@ -41,8 +47,14 @@ const child =
         { stdio: "inherit" }
     )
     : spawn(
-        npmCommand,
-        ["run", command, "--", ...commandArguments],
+        npxCommand,
+        [
+            "vite",
+            ...VITE_ARGS[command],
+            "--config",
+            "vite.config.mjs",
+            ...commandArguments
+        ],
         { stdio: "inherit" }
     );
 

@@ -3,8 +3,13 @@ import {
     input,
     confirm
 } from "@inquirer/prompts";
-import { writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { writeFile, mkdir, cp, readFile  } from "node:fs/promises";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const PACKAGE_ROOT = resolve(__dirname, "..", "..");
 
 /** TODO
 const LANGUAGE = await select({
@@ -165,12 +170,87 @@ export default globalVariables;
 `;
 
 const configPath = resolve(
+    process.cwd(),
     "src",
     "config",
     "globalVariables.js"
 );
 
+await mkdir(dirname(configPath), { recursive: true });
 await writeFile(configPath, config, "utf8");
+
+/**
+ * Files that make up the actual site. These get copied out of the
+ * installed package and into the user's own project so `dev`/`build`
+ * run against a real local copy — never against node_modules.
+ */
+const TEMPLATE_ENTRIES = [
+    "index.html",
+    "vite.config.mjs",
+    "public",
+    "src/config/fonts.js",
+    "src/data/letters.example.js",
+    "src/data/lettersLoader.js",
+    "src/i18n",
+    "src/scripts",
+    "src/services",
+    "src/styles",
+    "src/views"
+];
+
+async function copyTemplateFiles() {
+    // Running the CLI from inside the moracarta source repo itself
+    // (e.g. via `npm run setup` while developing moracarta) — the
+    // "package" and the "project" are the same folder, nothing to copy.
+    if (resolve(PACKAGE_ROOT) === resolve(process.cwd())) {
+        return;
+    }
+
+    console.log("\nCopying project files...");
+
+    for (const entry of TEMPLATE_ENTRIES) {
+        const source = resolve(PACKAGE_ROOT, entry);
+        const destination = resolve(process.cwd(), entry);
+
+        await mkdir(dirname(destination), { recursive: true });
+        await cp(source, destination, { recursive: true });
+    }
+
+    console.log("✓ Project files copied.");
+}
+
+async function ensureModuleType() {
+    const userPackageJsonPath = resolve(process.cwd(), "package.json");
+
+    let userPackageJson;
+
+    try {
+        userPackageJson = JSON.parse(
+            await readFile(userPackageJsonPath, "utf8")
+        );
+    } catch (error) {
+        if (error.code === "ENOENT") {
+            return;
+        }
+
+        throw error;
+    }
+
+    if (userPackageJson.type === "module") {
+        return;
+    }
+
+    userPackageJson.type = "module";
+
+    await writeFile(
+        userPackageJsonPath,
+        JSON.stringify(userPackageJson, null, 2) + "\n",
+        "utf8"
+    );
+}
+
+await copyTemplateFiles();
+await ensureModuleType();
 
 console.log("\n❤️ Moracarta setup complete!");
 console.log(`Configuration saved to: ${configPath}`);

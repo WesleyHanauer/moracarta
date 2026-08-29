@@ -1,18 +1,38 @@
+#!/usr/bin/env node
+
 import { execSync } from "node:child_process";
-import globalVariables from "../config/globalVariables.js";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+
+const configPath = resolve(process.cwd(), "src", "config", "globalVariables.js");
+
+let globalVariables;
+
+try {
+    ({ default: globalVariables } = await import(pathToFileURL(configPath).href));
+} catch (error) {
+    if (error.code === "ERR_MODULE_NOT_FOUND") {
+        console.error("\n✗ No configuration found. Run moracarta setup first.");
+        process.exit(1);
+    }
+
+    throw error;
+}
 
 const { PROJECT_NAME } = globalVariables;
 
+const npxCommand = process.platform === "win32" ? "npx.cmd" : "npx";
+
 console.log(`Building ${PROJECT_NAME}...`);
 
-execSync("npm run build", {
+execSync(`${npxCommand} vite build --config vite.config.mjs`, {
     stdio: "inherit"
 });
 
 console.log(`Deploying ${PROJECT_NAME} to Cloudflare Pages...`);
 
 execSync(
-    `npx wrangler pages deploy dist --project-name ${PROJECT_NAME}`,
+    `${npxCommand} wrangler pages deploy dist --project-name ${PROJECT_NAME}`,
     {
         stdio: "inherit"
     }
