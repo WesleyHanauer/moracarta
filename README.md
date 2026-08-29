@@ -20,10 +20,11 @@
 **And it's as simple as:**
 
 ```bash
+npm init -y
 npm i moracarta
-moracarta setup
-moracarta build
-moracarta deploy
+npx moracarta setup
+npx moracarta build
+npx moracarta deploy
 ```
 
 ### App Demo
