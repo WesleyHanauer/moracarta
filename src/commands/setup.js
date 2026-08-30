@@ -11,17 +11,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PACKAGE_ROOT = resolve(__dirname, "..", "..");
 
-/** TODO
-const LANGUAGE = await select({
-    message: "What is the main language of the application?",
-    choices: [
-        { name: "English", value: "en" },
-        { name: "Português (Brasil)", value: "pt-BR" }
-    ]
-});
-*/
-const LANGUAGE = "en";
-
 const PROJECT_NAME = await input({
     message: "What should your project be called? (Cloudflare project name, do not use 'moracarta')",
     default: "romantic-gift",
@@ -137,8 +126,6 @@ const config = `/**
  * This file was generated automatically by Moracarta setup.
  */
 
-const LANGUAGE = ${JSON.stringify(LANGUAGE)};
-
 const PROJECT_NAME = ${JSON.stringify(PROJECT_NAME)};
 const TITLE = ${JSON.stringify(TITLE)};
 
@@ -155,7 +142,6 @@ const CLOSED_LETTER_TEXT_BOTTOM_LINE =
     ${JSON.stringify(CLOSED_LETTER_TEXT_BOTTOM_LINE)};
 
 const globalVariables = {
-    LANGUAGE,
     PROJECT_NAME,
     TITLE,
     YOUR_NAME,
@@ -191,7 +177,6 @@ const TEMPLATE_ENTRIES = [
     "src/config/fonts.js",
     "src/data/letters.example.js",
     "src/data/lettersLoader.js",
-    "src/i18n",
     "src/scripts",
     "src/services",
     "src/styles",

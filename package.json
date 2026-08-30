@@ -25,7 +25,6 @@
     "src/config/fonts.js",
     "src/data/letters.example.js",
     "src/data/lettersLoader.js",
-    "src/i18n",
     "src/scripts",
     "src/services",
     "src/styles",

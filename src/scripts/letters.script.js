@@ -1,4 +1,3 @@
-import { getTranslation } from './i18n.js';
 import { letters } from '../data/lettersLoader.js';
 
 console.log('letters.script loaded');
@@ -99,7 +98,7 @@ if (!letter) {
   const previousLetter = currentIndex > 0 ? sortedLetters[currentIndex - 1] : null;
   const nextLetter = currentIndex < sortedLetters.length - 1 ? sortedLetters[currentIndex + 1] : null;
 
-  document.getElementById('letter-counter').textContent = `${currentIndex + 1} ${getTranslation('OF')} ${sortedLetters.length}`;
+  document.getElementById('letter-counter').textContent = `${currentIndex + 1} Of ${sortedLetters.length}`;
 
   if (previousLetter) {
     const previousButton = document.getElementById('nav-previous');

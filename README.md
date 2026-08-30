@@ -31,6 +31,7 @@ npx moracarta deploy
 - `npx moracarta setup` sets up Moracarta and lets you configure the website.
 - `npx moracarta build` builds your website using your configured letters and settings.
 - `npx moracarta deploy` deploys the finished website for free.
+
 ### App Demo
 <p align="center">
     <img src="public/assets/images/demo-main-page.png" height="400">
@@ -40,7 +41,7 @@ npx moracarta deploy
 ### Setup Demo
 
 <img src="public/assets/images/setup-demo.png" width="100%">
-<br><br>
+<br>
 
 ## That's it.
 

@@ -2,8 +2,6 @@
  * This file was generated automatically by Moracarta setup.
  */
 
-const LANGUAGE = "en";
-
 const PROJECT_NAME = "romantic-gift";
 const TITLE = "Letters to my love";
 
@@ -20,7 +18,6 @@ const CLOSED_LETTER_TEXT_BOTTOM_LINE =
     "&#10084;&#65039; I love you &#10084;&#65039;";
 
 const globalVariables = {
-    LANGUAGE,
     PROJECT_NAME,
     TITLE,
     YOUR_NAME,

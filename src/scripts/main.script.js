@@ -1,4 +1,3 @@
-import { getTranslation } from './i18n.js';
 import { letters } from '../data/lettersLoader.js';
 
 const listContainer = document.getElementById('letter-list');
@@ -52,7 +51,6 @@ function renderLetters() {
     return;
   }
 
-  const tapToOpenText = getTranslation('TAP_TO_OPEN');
   const orderedLetters = [...letters].reverse();
 
   orderedLetters.forEach((letter) => {
@@ -83,7 +81,7 @@ function renderLetters() {
           <div class="envelope-centro">
             <span class="envelope-data" style="color:${palette.text};">${letter.date}</span>
             <span class="envelope-titulo" style="color:${palette.text};">${letter.title}</span>
-            <span class="envelope-hint" style="color:${palette.text};">${tapToOpenText}</span>
+            <span class="envelope-hint" style="color:${palette.text};">Tap to open</span>
           </div>
           <div class="envelope-canto tl"></div>
           <div class="envelope-canto tr"></div>

@@ -17,10 +17,8 @@ moracarta/
     ├── data/                       
     │   └── letters.example.js    # Content of all the letters / replaced by letters.js on ´moracarta add´
     │   └── lettersLoader.js      # Checks wether we are loading example or user generated letters
-    ├── i18n/#                    # Translation files, not implemented yet
     ├── scripts/                  # Main JS code
     │   ├── data.variable.js      # Implement variables in HTML
-    │   ├── i18n.js               # Translation setup, not implemented yet
     │   ├── letters.script.js     # Animation and setting up of the letters page
     │   └── main.script.js        # Animation and setting up of the main page
     ├── services/                 # External service integration
