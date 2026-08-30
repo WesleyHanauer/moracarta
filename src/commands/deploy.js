@@ -4,12 +4,12 @@ import { execSync } from "node:child_process";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const configPath = resolve(process.cwd(), "src", "config", "globalVariables.js");
+const dataPath = resolve(process.cwd(), "src", "config", "globalVariables.js");
 
 let globalVariables;
 
 try {
-    ({ default: globalVariables } = await import(pathToFileURL(configPath).href));
+    ({ default: globalVariables } = await import(pathToFileURL(dataPath).href));
 } catch (error) {
     if (error.code === "ERR_MODULE_NOT_FOUND") {
         console.error("\n✗ No configuration found. Run moracarta setup first.");

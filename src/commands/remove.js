@@ -7,7 +7,7 @@ import { resolve } from "node:path";
 const LETTERS_FILE = resolve(
     process.cwd(),
     "src",
-    "data",
+    "content",
     "letters.js"
 );
 
@@ -32,7 +32,7 @@ function extractLetters(lettersFile) {
 
     if (!match) {
         throw new Error(
-            "Could not find the letters array in src/data/letters.js."
+            "Could not find the letters array in src/content/letters.js."
         );
     }
 

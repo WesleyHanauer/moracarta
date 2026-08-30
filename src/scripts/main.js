@@ -1,4 +1,4 @@
-import { letters } from '../data/lettersLoader.js';
+import { letters } from '../loaders/lettersLoader.js';
 
 const listContainer = document.getElementById('letter-list');
 
@@ -56,7 +56,7 @@ function renderLetters() {
   orderedLetters.forEach((letter) => {
     const palette = generatePalette(letter);
     const link = document.createElement('a');
-    link.href = `./src/views/letters.view.html?id=${letter.id}`;
+    link.href = `./src/views/letters.html?id=${letter.id}`;
     link.className = 'envelope-link';
 
     link.innerHTML = `

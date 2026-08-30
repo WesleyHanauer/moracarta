@@ -23,16 +23,16 @@
     "public",
     "src/commands",
     "src/config/fonts.js",
-    "src/data/letters.example.js",
-    "src/data/lettersLoader.js",
+    "src/content/letters.example.js",
+    "src/loaders/lettersLoader.js",
     "src/scripts",
     "src/services",
     "src/styles",
     "src/views"
   ],
-  "postinstall": "node src/commands/postinstall.js",
+  "postinstall": "node src/commands/postInstall.js",
   "bin": {
-    "moracarta": "src/commands/cliConfig.js"
+    "moracarta": "src/config/cliConfig.js"
   },
   "scripts": {
     "setup": "node src/commands/setup.js",

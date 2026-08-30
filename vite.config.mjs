@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
-        letter: resolve(import.meta.dirname, 'src/views/letters.view.html')
+        letter: resolve(import.meta.dirname, 'src/views/letters.html')
       }
     }
   }

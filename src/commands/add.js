@@ -11,7 +11,7 @@ import { getDocumentText } from "../services/googleDocs.js";
 const DATA_DIRECTORY = resolve(
     process.cwd(),
     "src",
-    "data"
+    "content"
 );
 
 const LETTERS_FILE = resolve(
@@ -76,7 +76,7 @@ ${letterObject}
 
     if (closingIndex === -1) {
         throw new Error(
-            "Could not find the end of the letters array in src/data/letters.js."
+            "Could not find the end of the letters array in src/content/letters.js."
         );
     }
 

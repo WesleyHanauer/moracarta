@@ -1,4 +1,4 @@
-import { letters } from '../data/lettersLoader.js';
+import { letters } from '../loaders/lettersLoader.js';
 
 console.log('letters.script loaded');
 
@@ -102,13 +102,13 @@ if (!letter) {
 
   if (previousLetter) {
     const previousButton = document.getElementById('nav-previous');
-    previousButton.href = `./letters.view.html?id=${previousLetter.id}`;
+    previousButton.href = `./letters.html?id=${previousLetter.id}`;
     previousButton.classList.remove('invisible');
   }
 
   if (nextLetter) {
     const nextButton = document.getElementById('nav-next');
-    nextButton.href = `./letters.view.html?id=${nextLetter.id}`;
+    nextButton.href = `./letters.html?id=${nextLetter.id}`;
     nextButton.classList.remove('invisible');
   }
 

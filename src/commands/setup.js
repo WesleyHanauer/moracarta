@@ -155,15 +155,15 @@ const globalVariables = {
 export default globalVariables;
 `;
 
-const configPath = resolve(
+const dataPath = resolve(
     process.cwd(),
     "src",
     "config",
     "globalVariables.js"
 );
 
-await mkdir(dirname(configPath), { recursive: true });
-await writeFile(configPath, config, "utf8");
+await mkdir(dirname(dataPath), { recursive: true });
+await writeFile(dataPath, config, "utf8");
 
 /**
  * Files that make up the actual site. These get copied out of the
@@ -175,8 +175,8 @@ const TEMPLATE_ENTRIES = [
     "vite.config.mjs",
     "public",
     "src/config/fonts.js",
-    "src/data/letters.example.js",
-    "src/data/lettersLoader.js",
+    "src/content/letters.example.js",
+    "src/loaders/lettersLoader.js",
     "src/scripts",
     "src/services",
     "src/styles",
@@ -238,5 +238,5 @@ await copyTemplateFiles();
 await ensureModuleType();
 
 console.log("\n❤️ Moracarta setup complete!");
-console.log(`Configuration saved to: ${configPath}`);
+console.log(`Configuration saved to: ${dataPath}`);
 console.log("Run moracarta dev to test the application");
