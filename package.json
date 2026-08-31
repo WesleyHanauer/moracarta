@@ -46,11 +46,11 @@
     "type": "git",
     "url": "git+https://github.com/WesleyHanauer/moracarta.git"
   },
-  "author": "",
+  "author": "Wesley Hanauer",
   "bugs": {
     "url": "https://github.com/WesleyHanauer/moracarta/issues"
   },
-  "homepage": "https://github.com/WesleyHanauer/moracarta#readme",
+  "homepage": "https://moracarta.pages.dev",
   "dependencies": {
     "@inquirer/prompts": "^8.6.0",
     "vite": "^8.2.2",
