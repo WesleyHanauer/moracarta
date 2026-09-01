@@ -1,4 +1,5 @@
 import { letters } from '../loaders/lettersLoader.js';
+import globalVariables from '../config/globalVariables.js';
 
 const listContainer = document.getElementById('letter-list');
 
@@ -97,3 +98,7 @@ function renderLetters() {
 
 renderLetters();
 
+if(globalVariables.SHOW_BRANDING){
+  let footer = document.getElementById('footer-link');
+  footer.textContent = "Made with 💌 Moracarta";
+}
