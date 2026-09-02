@@ -59,14 +59,14 @@ function generatePalette(letterItem) {
 
 function applyEnvelopePalette(letterItem) {
   const palette = generatePalette(letterItem);
-  document.querySelector('.env-fundo').style.background = palette.envelope;
+  document.querySelector('.env-background').style.background = palette.envelope;
 
-  const flapPolygon = document.querySelector('.env-aba svg polygon');
+  const flapPolygon = document.querySelector('.env-flap svg polygon');
   if (flapPolygon) {
     flapPolygon.setAttribute('fill', palette.flap);
   }
 
-  const sidePolygons = document.querySelectorAll('.env-corpo-svg svg polygon');
+  const sidePolygons = document.querySelectorAll('.env-body-svg svg polygon');
   if (sidePolygons.length === 3) {
     sidePolygons[0].setAttribute('fill', palette.shadow);
     sidePolygons[1].setAttribute('fill', palette.shadow);

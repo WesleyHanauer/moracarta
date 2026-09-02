@@ -1,8 +1,4 @@
-import {
-    select,
-    input,
-    confirm
-} from "@inquirer/prompts";
+import { select, input, confirm } from "@inquirer/prompts";
 import { writeFile, mkdir, cp, readFile  } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,12 +13,12 @@ const PROJECT_NAME = await input({
 });
 
 const TITLE = await input({
-    message: "Enter the title of the application:",
+    message: "Enter the title of the application: ",
     default: "Letters to my love"
 });
 
 const FONT = await select({
-    message: "What font would you like to use?",
+    message: "What font style would you like to use?",
     choices: [
         { name: "Handwritten", value: "handwritten" },
         { name: "Classic", value: "classic" },
@@ -102,9 +98,15 @@ const DEFAULT_CLOSED_LETTER_TEXT_TOP_LINE =
 const DEFAULT_CLOSED_LETTER_TEXT_BOTTOM_LINE =
     "&#10084;&#65039; I love you &#10084;&#65039;";
 
-const EDIT_ENVELOPE_TEXT = await confirm({
-    message: "Would you like to customize the envelope text?",
-    default: false
+const EDIT_ENVELOPE_TEXT = await select({
+    message: "Would you like to customize the envelope text? ",
+    choices: [{
+        name: "yes",
+        value: true
+    },{
+        name: "no",
+        value: false
+    }],
 });
 
 let CLOSED_LETTER_TEXT_TOP_LINE = DEFAULT_CLOSED_LETTER_TEXT_TOP_LINE;
@@ -121,6 +123,17 @@ if (EDIT_ENVELOPE_TEXT) {
         default: DEFAULT_CLOSED_LETTER_TEXT_BOTTOM_LINE
     });
 }
+
+const SHOW_BRANDING = await select({
+    message: "Would you like to display 'Made with 💌 Moracarta' branding in the footer? ",
+    choices: [{
+        name: "yes",
+        value: true
+    },{
+        name: "no",
+        value: false
+    }],
+});
 
 const config = `/**
  * This file was generated automatically by Moracarta setup.
@@ -141,6 +154,8 @@ const CLOSED_LETTER_TEXT_TOP_LINE =
 const CLOSED_LETTER_TEXT_BOTTOM_LINE =
     ${JSON.stringify(CLOSED_LETTER_TEXT_BOTTOM_LINE)};
 
+const SHOW_BRANDING = ${SHOW_BRANDING};
+
 const globalVariables = {
     PROJECT_NAME,
     TITLE,
@@ -149,7 +164,8 @@ const globalVariables = {
     TEXT_TOP,
     TEXT_BOTTOM,
     CLOSED_LETTER_TEXT_TOP_LINE,
-    CLOSED_LETTER_TEXT_BOTTOM_LINE
+    CLOSED_LETTER_TEXT_BOTTOM_LINE,
+    SHOW_BRANDING
 };
 
 export default globalVariables;

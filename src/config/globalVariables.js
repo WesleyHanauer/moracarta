@@ -17,6 +17,8 @@ const CLOSED_LETTER_TEXT_TOP_LINE =
 const CLOSED_LETTER_TEXT_BOTTOM_LINE =
     "&#10084;&#65039; I love you &#10084;&#65039;";
 
+const SHOW_BRANDING = true;
+
 const globalVariables = {
     PROJECT_NAME,
     TITLE,
@@ -25,7 +27,8 @@ const globalVariables = {
     TEXT_TOP,
     TEXT_BOTTOM,
     CLOSED_LETTER_TEXT_TOP_LINE,
-    CLOSED_LETTER_TEXT_BOTTOM_LINE
+    CLOSED_LETTER_TEXT_BOTTOM_LINE,
+    SHOW_BRANDING
 };
 
 export default globalVariables;
