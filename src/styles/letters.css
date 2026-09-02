@@ -74,7 +74,7 @@ body {
   opacity: 1;
 }
 
-.env-fundo {
+.env-background {
   position: absolute;
   inset: 0;
   background: #e8d5b0;
@@ -82,7 +82,7 @@ body {
   z-index: 1;
 }
 
-.env-papel {
+.env-paper {
   position: absolute;
   left: 11%;
   right: 11%;
@@ -97,7 +97,7 @@ body {
   overflow: hidden;
 }
 
-.env-papel.leaving {
+.env-paper.leaving {
   transform: translateY(-120%);
 }
 
@@ -111,19 +111,19 @@ body {
   font-style: italic;
 }
 
-.env-corpo-svg {
+.env-body-svg {
   position: absolute;
   inset: 0;
   z-index: 3;
   pointer-events: none;
 }
 
-.env-corpo-svg svg {
+.env-body-svg svg {
   width: 100%;
   height: 100%;
 }
 
-.env-aba {
+.env-flap {
   position: absolute;
   top: 0;
   left: 0;
@@ -136,20 +136,20 @@ body {
   overflow: visible;
 }
 
-.env-aba.open {
+.env-flap.open {
   transform: rotateX(180deg);
 }
 
-.env-aba.behind {
+.env-flap.behind {
   z-index: 0;
 }
 
-.env-aba svg {
+.env-flap svg {
   width: 100%;
   height: 100%;
 }
 
-.env-lacre {
+.env-seal {
   position: absolute;
   z-index: 5;
   width: 50px;
@@ -176,7 +176,7 @@ body {
   will-change: transform;
 }
 
-.env-lacre.fading {
+.env-seal.fading {
   opacity: 0;
   transform: translate(-50%, -120%) scale(0.5);
 }
