@@ -1,12 +1,12 @@
 import { letters } from '../loaders/lettersLoader.js';
 
-console.log('letters.script loaded');
-
+// Checks the URL to see what ID is select.
+// Then loads letter with that same ID.
 const params = new URLSearchParams(window.location.search);
 const requestedId = parseInt(params.get('id'), 10);
 const letter = letters.find((entry) => entry.id === requestedId);
 
-// A set of base color families used to generate a unique yet consistent
+// A set of base color families used to generate a unique
 // envelope palette for each letter based on its id, title, and date.
 const paletteFamilies = [
   { hue: 18, sat: 54, light: 88, sealHue: 345, sealSat: 76, sealLight: 42 },
@@ -21,9 +21,8 @@ const paletteFamilies = [
   { hue: 14, sat: 44, light: 88, sealHue: 8, sealSat: 80, sealLight: 36 }
 ];
 
+// Simple hash function to determine which color palette to use on the envelope.
 function hashString(value) {
-  // Simple deterministic string hash used to select a palette and variant.
-  // This keeps each letter appearance stable across page loads.
   let hash = 0;
   for (let index = 0; index < value.length; index += 1) {
     hash = ((hash << 5) - hash) + value.charCodeAt(index);
@@ -32,21 +31,21 @@ function hashString(value) {
   return Math.abs(hash);
 }
 
+// Keeps color value within a set range.
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
+// Build a deterministic palette based on the letter's identity.
+// The base hash selects one of the palette families, while the variant
+// arrays add subtle shifts to keep similar letters visually distinct.
 function generatePalette(letterItem) {
-  // Build a deterministic palette based on the letter's identity.
-  // The base hash selects one of the palette families, while the variant
-  // arrays add subtle shifts to keep similar letters visually distinct.
   const baseHash = hashString(`${letterItem.id}|${letterItem.title}|${letterItem.date}`);
   const family = paletteFamilies[baseHash % paletteFamilies.length];
   const variant = Math.floor(baseHash / paletteFamilies.length) % 7;
   const hueShift = [0, 14, -12, 20, -18, 26, -22][variant];
   const satShift = [0, 8, -6, 12, -10, 14, -8][variant];
   const lightShift = [0, -8, 8, -5, 6, -10, 10][variant];
-
   const envelope = `hsl(${clamp(family.hue + hueShift, 0, 360)}, ${clamp(family.sat + satShift, 42, 72)}%, ${clamp(family.light + lightShift, 78, 92)}%)`;
   const flap = `hsl(${clamp(family.hue + hueShift + 2, 0, 360)}, ${clamp(family.sat + satShift + 8, 50, 82)}%, ${clamp(family.light - 18 + lightShift, 60, 76)}%)`;
   const shadow = `hsl(${clamp(family.hue + hueShift + 8, 0, 360)}, ${clamp(family.sat + satShift - 12, 30, 58)}%, ${clamp(family.light - 36 + lightShift, 42, 58)}%)`;
@@ -136,10 +135,10 @@ if (!letter) {
   }, 2100);
 }
 
-function startHeartAnimation() {
   // Floating heart particle animation for the letter view background.
   // Particles are born after a delay, float upward, fade at the top, and die
   // when they leave the canvas to keep the animation visually light.
+function startHeartAnimation() {
   const canvas = document.getElementById('canvas-hearts');
   const context = canvas.getContext('2d');
   const devicePixelRatio = window.devicePixelRatio || 1;
@@ -251,6 +250,5 @@ function startHeartAnimation() {
       context.clearRect(0, 0, width, height);
     }
   }
-
   window.requestAnimationFrame(animate);
 }
