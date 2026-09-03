@@ -1,16 +1,17 @@
 # Contributing
 
-## Before You Start
 
-1. Check the existing issues to see if your idea or bug has already been reported;
+### You may check existing issues.
+### You may create your own issues.
+### To assign an issue to yourself just comment '/assign' on the issue and github actions will do the rest.
+### Please avoid working on an issue without having it assign to you.
+### Any questions feel free to contact me.
 
-2. For larger changes, open an issue first so the approach can be discussed and the issue assigned to you;
-
-3. Check issues labeled `good first issue` if you're new to the project;
-
-4. Check issues labeled `help wanted` if you're looking for something to work on;
-
-5. If you're unsure about anything, ask in the relevant issue;
+## Use of AI
+- You may use AI to assist you in understanding the project.
+- You may use AI to assist you in changing the code.
+- You may use AI to assist you in understanding a problem.
+- Avoid generating large amounts of AI code, specially without testing.
 
 ## Working on the Site vs. the CLI
 
@@ -188,26 +189,6 @@ For example:
 Closes #42
 ```
 
-## Working on `help wanted` Issues
-
-If you'd like to work on one:
-
-1. Comment on the issue saying you'd like to work on it;
-
-2. If necessary, wait for the issue to be assigned to you;
-
-3. Fork the repository;
-
-4. Create your branch from `development`;
-
-5. Implement the change;
-
-6. Test it locally;
-
-7. Open a pull request targeting `development`.
-
-If you want to work on an issue but aren't sure how to approach it, feel free to ask questions before starting.
-
 ## Good First Issues
 
 Issues labeled `good first issue` are intended to be approachable for people who are new to the project or open source.
@@ -230,9 +211,6 @@ When reporting a bug, please include:
 * What you expected to happen
 * What actually happened
 * Steps to reproduce the problem
-* Your operating system
-* Node.js version
-* Moracarta version, if applicable
 * Relevant error messages
 * Screenshots or recordings when useful
 
@@ -244,7 +222,7 @@ Feature suggestions are welcome.
 
 Before opening a feature request, check whether a similar issue already exists.
 
-When suggesting a feature, explain:
+When suggesting a feature, explain at least one of these:
 
 * What problem it solves
 * Why it would be useful
@@ -290,13 +268,13 @@ and go through `add`, `remove`, `dev`, `build` and `deploy` from there like a re
 I also recommend having your fork deployed via:
 
 ```bash
-moracarta build
+npx moracarta build
 ```
 
 then:
 
 ```bash
-moracarta deploy
+npx moracarta deploy
 ```
 
 and test by redeploying, since some things might break there but not locally.
