@@ -1,3 +1,12 @@
+// This file is the placeholder for the letters, this one is used until the user
+// runs 'npx moracarta add' for the first time, then letters.js is created.
+// This file is also usefull in the live showcase since it's built together
+// with the rest of the app.
+
+// Each different letter is a different object inside const letters.
+// Color palettes are generated from the id, date and title.
+// Since they are generated from a hashed string letters with
+// the same information will always generate the same colors.
 export const letters = [
   {
     id: 1,
