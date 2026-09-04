@@ -1,3 +1,6 @@
+// Post install script, the sole purpose of this file is to instruct the user
+// by telling them to check existing commands by running 'npx moracarta help'.
+
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
