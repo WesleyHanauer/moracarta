@@ -5,6 +5,15 @@
   "description": "",
   "license": "MIT",
   "main": "index.js",
+  "scripts": {
+    "setup": "node src/commands/setup.js",
+    "dev": "vite --config vite.config.mjs",
+    "build": "vite build --config vite.config.mjs",
+    "preview": "vite preview --config vite.config.mjs",
+    "deploy": "node src/commands/deploy.js",
+    "add": "node src/commands/add.js",
+    "test": "node --test"
+  },
   "keywords": [
     "love letter",
     "digital love letter",
@@ -38,15 +47,6 @@
   "postinstall": "node src/commands/postInstall.js",
   "bin": {
     "moracarta": "src/config/cliConfig.js"
-  },
-  "scripts": {
-    "setup": "node src/commands/setup.js",
-    "dev": "vite --config vite.config.mjs",
-    "build": "vite build --config vite.config.mjs",
-    "preview": "vite preview --config vite.config.mjs",
-    "deploy": "node src/commands/deploy.js",
-    "add": "node src/commands/add.js",
-    "test": "node --test"
   },
   "repository": {
     "type": "git",

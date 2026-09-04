@@ -1,3 +1,10 @@
+/**
+ * 'npx moracarta setup' runs the whole CLI setup part of the app.
+ * It gives the user multiple prompts to properly setup their custom site.
+ * After it's done all custom variables are written into src/config/globalVariables.js
+ * See setupCore.js for further documentation on this.
+ */
+
 import { select, input, confirm } from "@inquirer/prompts";
 import { writeFile, mkdir } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
@@ -162,11 +169,10 @@ const dataPath = resolve(
 await mkdir(dirname(dataPath), { recursive: true });
 await writeFile(dataPath, config, "utf8");
 
-/**
- * Files that make up the actual site. These get copied out of the
- * installed package and into the user's own project so `dev`/`build`
- * run against a real local copy — never against node_modules.
- */
+
+// Files that make up the actual site. These get copied out of the
+// installed package and into the user's own project so `dev`/`build`
+// run against a real local copy — never against node_modules.
 const TEMPLATE_ENTRIES = [
     "index.html",
     "vite.config.mjs",
