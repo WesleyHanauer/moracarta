@@ -45,7 +45,8 @@
     "build": "vite build --config vite.config.mjs",
     "preview": "vite preview --config vite.config.mjs",
     "deploy": "node src/commands/deploy.js",
-    "add": "node src/commands/add.js"
+    "add": "node src/commands/add.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
