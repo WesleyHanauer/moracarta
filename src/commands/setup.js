@@ -1,7 +1,12 @@
 import { select, input, confirm } from "@inquirer/prompts";
-import { writeFile, mkdir, cp, readFile  } from "node:fs/promises";
+import { writeFile, mkdir } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+    buildSetupConfig,
+    copyTemplateFiles,
+    ensureModuleType
+} from "./setupCore.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -135,41 +140,17 @@ const SHOW_BRANDING = await select({
     }],
 });
 
-const config = `/**
- * This file was generated automatically by Moracarta setup.
- */
-
-const PROJECT_NAME = ${JSON.stringify(PROJECT_NAME)};
-const TITLE = ${JSON.stringify(TITLE)};
-
-const FONT = ${JSON.stringify(FONT)};
-
-const TEXT_TOP = ${JSON.stringify(TEXT_TOP)};
-const TEXT_BOTTOM = ${JSON.stringify(TEXT_BOTTOM)};
-const YOUR_NAME = ${JSON.stringify(YOUR_NAME)};
-
-const CLOSED_LETTER_TEXT_TOP_LINE =
-    ${JSON.stringify(CLOSED_LETTER_TEXT_TOP_LINE)};
-
-const CLOSED_LETTER_TEXT_BOTTOM_LINE =
-    ${JSON.stringify(CLOSED_LETTER_TEXT_BOTTOM_LINE)};
-
-const SHOW_BRANDING = ${SHOW_BRANDING};
-
-const globalVariables = {
-    PROJECT_NAME,
-    TITLE,
-    YOUR_NAME,
-    FONT,
-    TEXT_TOP,
-    TEXT_BOTTOM,
-    CLOSED_LETTER_TEXT_TOP_LINE,
-    CLOSED_LETTER_TEXT_BOTTOM_LINE,
-    SHOW_BRANDING
-};
-
-export default globalVariables;
-`;
+const config = buildSetupConfig({
+    projectName: PROJECT_NAME,
+    title: TITLE,
+    font: FONT,
+    textTop: TEXT_TOP,
+    textBottom: TEXT_BOTTOM,
+    yourName: YOUR_NAME,
+    closedLetterTextTopLine: CLOSED_LETTER_TEXT_TOP_LINE,
+    closedLetterTextBottomLine: CLOSED_LETTER_TEXT_BOTTOM_LINE,
+    showBranding: SHOW_BRANDING
+});
 
 const dataPath = resolve(
     process.cwd(),
@@ -199,59 +180,13 @@ const TEMPLATE_ENTRIES = [
     "src/views"
 ];
 
-async function copyTemplateFiles() {
-    // Running the CLI from inside the moracarta source repo itself
-    // (e.g. via `npm run setup` while developing moracarta) — the
-    // "package" and the "project" are the same folder, nothing to copy.
-    if (resolve(PACKAGE_ROOT) === resolve(process.cwd())) {
-        return;
-    }
-
+if (resolve(PACKAGE_ROOT) !== resolve(process.cwd())) {
     console.log("\nCopying project files...");
-
-    for (const entry of TEMPLATE_ENTRIES) {
-        const source = resolve(PACKAGE_ROOT, entry);
-        const destination = resolve(process.cwd(), entry);
-
-        await mkdir(dirname(destination), { recursive: true });
-        await cp(source, destination, { recursive: true });
-    }
-
+    await copyTemplateFiles(PACKAGE_ROOT, process.cwd(), TEMPLATE_ENTRIES);
     console.log("✓ Project files copied.");
 }
 
-async function ensureModuleType() {
-    const userPackageJsonPath = resolve(process.cwd(), "package.json");
-
-    let userPackageJson;
-
-    try {
-        userPackageJson = JSON.parse(
-            await readFile(userPackageJsonPath, "utf8")
-        );
-    } catch (error) {
-        if (error.code === "ENOENT") {
-            return;
-        }
-
-        throw error;
-    }
-
-    if (userPackageJson.type === "module") {
-        return;
-    }
-
-    userPackageJson.type = "module";
-
-    await writeFile(
-        userPackageJsonPath,
-        JSON.stringify(userPackageJson, null, 2) + "\n",
-        "utf8"
-    );
-}
-
-await copyTemplateFiles();
-await ensureModuleType();
+await ensureModuleType(process.cwd());
 
 console.log("\n❤️ Moracarta setup complete!");
 console.log(`Configuration saved to: ${dataPath}`);
