@@ -1,6 +1,9 @@
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
+
+// This function creates a new config file at src/config/globalVariables
+// containing basically all the custom information (apart from the letters of course)
 export function buildSetupConfig({
     projectName,
     title,
@@ -49,6 +52,7 @@ export default globalVariables;
 `;
 }
 
+// Ensures the user's local package.json is running node as an ESM needed for modern JS syntax
 export async function ensureModuleType(projectRoot) {
     const userPackageJsonPath = resolve(projectRoot, "package.json");
 
@@ -79,6 +83,7 @@ export async function ensureModuleType(projectRoot) {
     );
 }
 
+// Copies files, assets and views from the installed package into the user's project directory.
 export async function copyTemplateFiles(packageRoot, projectRoot, templateEntries) {
     if (resolve(packageRoot) === resolve(projectRoot)) {
         return;
