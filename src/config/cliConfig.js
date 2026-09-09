@@ -23,7 +23,7 @@ const VITE_ARGS = {
 const HELP_TEXT = `
 💌 Moracarta — build your own love-letter website
 
-Usage: moracarta <command>
+Usage: npx moracarta <command>
 
 Commands:
   setup      Scaffold the site into your project and configure it interactively
