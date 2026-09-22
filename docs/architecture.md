@@ -34,3 +34,5 @@ moracarta/
     └── views/
         └── letters.html          # Letters page HTML
 ```
+
+Command-specific usage notes are documented in [`docs/commands/`](commands/).
